@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tobby — Software Engineer & Photographer</title>
+
+  <meta name="description" content="Tobby (Anani Oluwatobiloba) — Software engineer who builds things for the web and captures moments through a lens. Based in the Netherlands.">
+  <meta name="author" content="Anani Oluwatobiloba">
+  <meta property="og:title" content="Tobby — Software Engineer & Photographer">
+  <meta property="og:description" content="I write code & shoot light. Based in the Netherlands.">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@Anani_oluwatobi">
+
+  <link rel="icon" href="../img/favicon.svg" type="image/svg+xml">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- Grain -->
+  <div class="grain" aria-hidden="true"></div>
+
+  <!-- ═══════════════════════════════════════════
+       NAVIGATION
+  ═══════════════════════════════════════════ -->
+  <header class="header" id="header">
+    <nav class="nav">
+      <a href="#" class="nav__logo">
+        <span class="nav__logo-bracket">[</span>T.<span class="nav__logo-bracket">]</span>
+      </a>
+
+      <ul class="nav__links" id="nav-links">
+        <li><a href="#about" class="nav__link" data-section="about"><span class="nav__link-idx">01</span>About</a></li>
+        <li><a href="#work" class="nav__link" data-section="work"><span class="nav__link-idx">02</span>Work</a></li>
+        <li><a href="#gallery" class="nav__link" data-section="gallery"><span class="nav__link-idx">03</span>Gallery</a></li>
+        <li><a href="#contact" class="nav__link" data-section="contact"><span class="nav__link-idx">04</span>Contact</a></li>
+      </ul>
+
+      <div class="nav__right">
+        <span class="nav__loc">
+          <span class="nav__loc-dot"></span>
+          52.3676&deg;N, 4.9041&deg;E
+        </span>
+        <button class="nav__burger" id="burger" aria-label="Toggle menu" aria-expanded="false">
+          <span></span><span></span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Mobile overlay -->
+  <div class="mob-menu" id="mob-menu">
+    <div class="mob-menu__body">
+      <ul class="mob-menu__links">
+        <li><a href="#about" class="mob-menu__link"><span>01</span>About</a></li>
+        <li><a href="#work" class="mob-menu__link"><span>02</span>Work</a></li>
+        <li><a href="#gallery" class="mob-menu__link"><span>03</span>Gallery</a></li>
+        <li><a href="#contact" class="mob-menu__link"><span>04</span>Contact</a></li>
+      </ul>
+      <div class="mob-menu__foot">
+        <a href="https://github.com/oluwatobiloba2000" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="https://twitter.com/Anani_oluwatobi" target="_blank" rel="noopener noreferrer">X</a>
+        <a href="https://www.linkedin.com/in/anani-oluwatobi/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       HERO — CINEMATIC DUAL EXPOSURE
+  ═══════════════════════════════════════════ -->
+  <section class="hero" id="hero">
+
+    <!-- LAYER 1: Interactive gradient mesh canvas -->
+    <canvas id="hero-canvas" aria-hidden="true"></canvas>
+
+    <!-- Dot grid overlay -->
+    <div class="hero__grid-pattern" aria-hidden="true"></div>
+
+    <!-- Scanlines overlay for film look -->
+    <div class="hero__scanlines" aria-hidden="true"></div>
+
+    <!-- Mouse-tracking spotlight -->
+    <div class="hero__spotlight" id="hero-spotlight" aria-hidden="true"></div>
+
+    <!-- Ambient glow orbs -->
+    <div class="hero__orb hero__orb--blue" aria-hidden="true"></div>
+    <div class="hero__orb hero__orb--amber" aria-hidden="true"></div>
+    <div class="hero__orb hero__orb--white" aria-hidden="true"></div>
+
+    <!-- Giant watermark -->
+    <div class="hero__watermark" aria-hidden="true">03</div>
+
+    <!-- LAYER 2: Viewfinder HUD -->
+    <div class="vf" aria-hidden="true">
+      <div class="vf__corner vf__corner--tl"></div>
+      <div class="vf__corner vf__corner--tr"></div>
+      <div class="vf__corner vf__corner--bl"></div>
+      <div class="vf__corner vf__corner--br"></div>
+      <!-- Crosshair center -->
+      <div class="vf__crosshair" id="vf-crosshair"></div>
+      <span class="vf__data vf__data--tl">f/2.8 &nbsp; 1/125s &nbsp; ISO 400</span>
+      <span class="vf__data vf__data--tr">v3.0.0 &nbsp; node 20 &nbsp; build:pass</span>
+      <span class="vf__data vf__data--bl">52.3676&deg;N &nbsp; 4.9041&deg;E &nbsp; NL</span>
+      <span class="vf__data vf__data--br">
+        <span class="vf__rec"></span>REC &nbsp; <span id="hero-time">00:00:00</span>
+      </span>
+    </div>
+
+    <!-- LAYER 3: Interactive floating elements (parallax) -->
+    <div class="hero__interactive" id="hero-interactive" aria-hidden="true">
+
+      <!-- Large rotating aperture ring -->
+      <svg class="hero__aperture" data-speed="0.015" viewBox="0 0 400 400" fill="none">
+        <circle cx="200" cy="200" r="190" stroke-dasharray="12 18" stroke-width="0.6" stroke="rgba(232,150,75,0.3)"/>
+        <circle cx="200" cy="200" r="155" stroke-dasharray="6 10" stroke-width="0.5" stroke="rgba(91,141,239,0.25)"/>
+        <circle cx="200" cy="200" r="120" stroke-dasharray="3 8" stroke-width="0.4" stroke="rgba(255,255,255,0.12)"/>
+        <circle cx="200" cy="200" r="85" stroke-dasharray="2 6" stroke-width="0.3" stroke="rgba(232,150,75,0.15)"/>
+        <!-- Tick marks -->
+        <line x1="200" y1="5" x2="200" y2="30" stroke="rgba(232,150,75,0.25)" stroke-width="0.5"/>
+        <line x1="200" y1="370" x2="200" y2="395" stroke="rgba(232,150,75,0.25)" stroke-width="0.5"/>
+        <line x1="5" y1="200" x2="30" y2="200" stroke="rgba(232,150,75,0.25)" stroke-width="0.5"/>
+        <line x1="370" y1="200" x2="395" y2="200" stroke="rgba(232,150,75,0.25)" stroke-width="0.5"/>
+        <!-- Diagonal ticks -->
+        <line x1="55" y1="55" x2="72" y2="72" stroke="rgba(91,141,239,0.2)" stroke-width="0.4"/>
+        <line x1="328" y1="328" x2="345" y2="345" stroke="rgba(91,141,239,0.2)" stroke-width="0.4"/>
+        <line x1="345" y1="55" x2="328" y2="72" stroke="rgba(91,141,239,0.2)" stroke-width="0.4"/>
+        <line x1="55" y1="345" x2="72" y2="328" stroke="rgba(91,141,239,0.2)" stroke-width="0.4"/>
+        <!-- Focus ring text path -->
+        <text font-family="Space Mono, monospace" font-size="6" fill="rgba(255,255,255,0.08)" letter-spacing="3">
+          <textPath href="#aperture-text-path">APERTURE ● f/2.8 ● DUAL EXPOSURE ● CRAFT:CODE+PHOTO ● ISO 400 ● </textPath>
+        </text>
+        <defs><path id="aperture-text-path" d="M200,30 a170,170 0 1,1 -1,0"/></defs>
+      </svg>
+
+      <!-- Polaroid card 1 — landscape photo -->
+      <div class="hero__polaroid hero__polaroid--1" data-speed="0.04" data-tilt>
+        <div class="hero__polaroid-inner">
+          <img src="https://images.unsplash.com/photo-1534067783941-51c9c23ecefd?w=400&q=75" alt="">
+        </div>
+        <span class="hero__polaroid-caption">Amsterdam, NL</span>
+      </div>
+
+      <!-- Polaroid card 2 — code/tech photo -->
+      <div class="hero__polaroid hero__polaroid--2" data-speed="0.06" data-tilt>
+        <div class="hero__polaroid-inner">
+          <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=400&q=75" alt="">
+        </div>
+        <span class="hero__polaroid-caption">late night push</span>
+      </div>
+
+      <!-- Polaroid card 3 — extra visual -->
+      <div class="hero__polaroid hero__polaroid--3" data-speed="0.035" data-tilt>
+        <div class="hero__polaroid-inner">
+          <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=400&q=75" alt="">
+        </div>
+        <span class="hero__polaroid-caption">golden hour</span>
+      </div>
+
+      <!-- Code snippet card -->
+      <div class="hero__code-float" data-speed="0.03" data-tilt>
+        <div class="hero__code-dots"><span></span><span></span><span></span></div>
+        <pre><code><span class="hl-kw">const</span> <span class="hl-fn">tobby</span> = {
+  <span class="hl-key">craft</span>: [<span class="hl-str">'code'</span>, <span class="hl-str">'photo'</span>],
+  <span class="hl-key">loc</span>:   <span class="hl-str">'Netherlands'</span>,
+  <span class="hl-key">mode</span>:  <span class="hl-str">'dual exposure'</span>,
+};</code></pre>
+        <span class="hero__code-cursor"></span>
+      </div>
+
+      <!-- Floating symbols -->
+      <span class="hero__particle hero__particle--1" data-speed="0.05">{&nbsp;}</span>
+      <span class="hero__particle hero__particle--2" data-speed="0.03">f/1.8</span>
+      <span class="hero__particle hero__particle--3" data-speed="0.07">&lt;/&gt;</span>
+      <span class="hero__particle hero__particle--4" data-speed="0.04">ISO</span>
+      <span class="hero__particle hero__particle--5" data-speed="0.06">(&nbsp;)</span>
+      <span class="hero__particle hero__particle--6" data-speed="0.02">35mm</span>
+      <span class="hero__particle hero__particle--7" data-speed="0.045">npm run</span>
+      <span class="hero__particle hero__particle--8" data-speed="0.055">&times;</span>
+    </div>
+
+    <!-- LAYER 4: Main content — LEFT aligned -->
+    <div class="hero__content">
+      <div class="hero__eyebrow reveal">
+        <span class="hero__tag hero__tag--code">&lt;engineer /&gt;</span>
+        <span class="hero__tag-divider">&times;</span>
+        <span class="hero__tag hero__tag--photo">photographer</span>
+      </div>
+
+      <h1 class="hero__title">
+        <span class="hero__line reveal">
+          <span class="hero__word">I write</span>
+          <span class="hero__word hero__word--code">code</span>
+        </span>
+        <span class="hero__line reveal reveal--d1">
+          <span class="hero__word">&amp; shoot</span>
+          <span class="hero__word hero__word--photo">light</span>
+        </span>
+      </h1>
+
+      <div class="hero__sub reveal reveal--d2">
+        <p>Two crafts, one vision. I build digital products and capture the world through a lens — composing both screens and scenes.</p>
+      </div>
+
+      <div class="hero__actions reveal reveal--d3">
+        <a href="#work" class="hero__cta hero__cta--primary">
+          <span>View my work</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M17 7H9M17 7V15" stroke="currentColor" stroke-width="2"/></svg>
+        </a>
+        <a href="#gallery" class="hero__cta hero__cta--outline">
+          <span>See the gallery</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Film ticker strip -->
+    <div class="hero__ticker" aria-hidden="true">
+      <div class="hero__ticker-track">
+        <span>DUAL EXPOSURE</span>
+        <span>&bull;</span>
+        <span>SOFTWARE ENGINEER</span>
+        <span>&bull;</span>
+        <span>PHOTOGRAPHER</span>
+        <span>&bull;</span>
+        <span>NETHERLANDS</span>
+        <span>&bull;</span>
+        <span>f/2.8 ISO 400</span>
+        <span>&bull;</span>
+        <span>NODE.JS</span>
+        <span>&bull;</span>
+        <span>REACT</span>
+        <span>&bull;</span>
+        <span>35MM FILM</span>
+        <span>&bull;</span>
+        <span>DUAL EXPOSURE</span>
+        <span>&bull;</span>
+        <span>SOFTWARE ENGINEER</span>
+        <span>&bull;</span>
+        <span>PHOTOGRAPHER</span>
+        <span>&bull;</span>
+        <span>NETHERLANDS</span>
+        <span>&bull;</span>
+        <span>f/2.8 ISO 400</span>
+        <span>&bull;</span>
+        <span>NODE.JS</span>
+        <span>&bull;</span>
+        <span>REACT</span>
+        <span>&bull;</span>
+        <span>35MM FILM</span>
+        <span>&bull;</span>
+      </div>
+    </div>
+
+    <!-- LAYER 5: Bottom bar -->
+    <div class="hero__bottom-bar">
+      <div class="hero__bottom-left reveal reveal--d3">
+        <span class="hero__meta-dot"></span>
+        <span>Based in the Netherlands</span>
+        <span class="hero__bottom-sep">/</span>
+        <span>Available for work</span>
+      </div>
+      <div class="hero__bottom-right reveal reveal--d3">
+        <a href="https://github.com/oluwatobiloba2000" target="_blank" rel="noopener noreferrer">GH</a>
+        <a href="https://twitter.com/Anani_oluwatobi" target="_blank" rel="noopener noreferrer">TW</a>
+        <a href="https://www.linkedin.com/in/anani-oluwatobi/" target="_blank" rel="noopener noreferrer">LI</a>
+      </div>
+    </div>
+
+    <!-- LAYER 6: Scroll indicator -->
+    <div class="hero__scroll" aria-hidden="true">
+      <span>scroll</span>
+      <div class="hero__scroll-bar"></div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       ABOUT — THE CONTACT SHEET
+  ═══════════════════════════════════════════ -->
+  <section class="about" id="about">
+    <div class="container">
+      <div class="sec-head reveal">
+        <span class="sec-head__num">01</span>
+        <h2 class="sec-head__title">About</h2>
+        <span class="sec-head__line"></span>
+        <span class="sec-head__meta">exposure: personal</span>
+      </div>
+
+      <!-- Contact-sheet inspired grid -->
+      <div class="about__sheet">
+        <!-- Frame 1: Photo -->
+        <div class="frame frame--photo reveal">
+          <div class="frame__sprocket" aria-hidden="true">
+            <span></span><span></span><span></span><span></span>
+          </div>
+          <div class="frame__inner">
+            <img
+              src="https://res.cloudinary.com/djyyikoe7/image/upload/v1725373267/hr-YLM-9785-bewerkt_bdym1a.jpg"
+              alt="Tobby — Anani Oluwatobiloba"
+              loading="lazy"
+            >
+          </div>
+          <div class="frame__sprocket" aria-hidden="true">
+            <span></span><span></span><span></span><span></span>
+          </div>
+          <span class="frame__number" aria-hidden="true">01A</span>
+        </div>
+
+        <!-- Frame 2: Bio text -->
+        <div class="frame frame--text reveal reveal--d1">
+          <div class="frame__inner">
+            <h3 class="about__name">
+              Tobby <em>(Anani Oluwatobiloba)</em>
+            </h3>
+            <p class="about__bio">
+              I'm a software engineer based in <strong>the Netherlands</strong>, originally from Nigeria. I build full-stack web applications — fintech platforms, productivity tools, and everything in between.
+            </p>
+            <p class="about__bio">
+              Photography is my second language. I see composition in both a React component tree and a street scene in Amsterdam. Both crafts demand the same eye: attention to detail, patience for the right moment, and obsession with getting the frame just right.
+            </p>
+          </div>
+          <span class="frame__number" aria-hidden="true">02A</span>
+        </div>
+
+        <!-- Frame 3: Dual stats -->
+        <div class="frame frame--stats reveal reveal--d2">
+          <div class="frame__inner">
+            <div class="dual-stat">
+              <div class="dual-stat__col">
+                <span class="dual-stat__icon">&lt;/&gt;</span>
+                <span class="dual-stat__val">4+</span>
+                <span class="dual-stat__label">Years writing code</span>
+              </div>
+              <div class="dual-stat__divider"></div>
+              <div class="dual-stat__col">
+                <span class="dual-stat__icon">&#x25CE;</span>
+                <span class="dual-stat__val">6+</span>
+                <span class="dual-stat__label">Years behind a lens</span>
+              </div>
+            </div>
+          </div>
+          <span class="frame__number" aria-hidden="true">03A</span>
+        </div>
+
+        <!-- Frame 4: Stack / Gear -->
+        <div class="frame frame--gear reveal">
+          <div class="frame__inner">
+            <div class="gear-split">
+              <div class="gear-split__col">
+                <h4 class="gear-split__title">
+                  <span class="gear-split__icon">&gt;_</span> Dev Stack
+                </h4>
+                <div class="tag-cloud">
+                  <span class="tag tag--code">JavaScript</span>
+                  <span class="tag tag--code">TypeScript</span>
+                  <span class="tag tag--code">React</span>
+                  <span class="tag tag--code">Next.js</span>
+                  <span class="tag tag--code">Node.js</span>
+                  <span class="tag tag--code">PostgreSQL</span>
+                  <span class="tag tag--code">GraphQL</span>
+                  <span class="tag tag--code">Docker</span>
+                  <span class="tag tag--code">AWS</span>
+                  <span class="tag tag--code">MongoDB</span>
+                </div>
+              </div>
+              <div class="gear-split__col">
+                <h4 class="gear-split__title">
+                  <span class="gear-split__icon">&#9673;</span> Photo Gear
+                </h4>
+                <div class="tag-cloud">
+                  <span class="tag tag--photo">Lightroom</span>
+                  <span class="tag tag--photo">Capture One</span>
+                  <span class="tag tag--photo">Street</span>
+                  <span class="tag tag--photo">Portraits</span>
+                  <span class="tag tag--photo">Golden Hour</span>
+                  <span class="tag tag--photo">Night</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <span class="frame__number" aria-hidden="true">04A</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       WORK — SELECTED PROJECTS
+  ═══════════════════════════════════════════ -->
+  <section class="work" id="work">
+    <div class="container">
+      <div class="sec-head reveal">
+        <span class="sec-head__num">02</span>
+        <h2 class="sec-head__title">Work</h2>
+        <span class="sec-head__line"></span>
+        <span class="sec-head__meta">shutter: projects</span>
+      </div>
+    </div>
+
+    <div class="work__grid container">
+      <!-- Project 1 -->
+      <article class="proj reveal">
+        <a href="http://getswiftbank.com" target="_blank" rel="noopener noreferrer" class="proj__link">
+          <div class="proj__film-border" aria-hidden="true">
+            <span class="proj__sprocket"></span>
+            <span class="proj__sprocket"></span>
+            <span class="proj__sprocket"></span>
+          </div>
+          <div class="proj__img">
+            <img src="../img/illustration/swiftbank.png" alt="Swift Finance" loading="lazy">
+            <div class="proj__overlay">
+              <span class="proj__view">View Project
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M17 7H9M17 7V15" stroke="currentColor" stroke-width="2"/></svg>
+              </span>
+            </div>
+          </div>
+          <div class="proj__film-border" aria-hidden="true">
+            <span class="proj__sprocket"></span>
+            <span class="proj__sprocket"></span>
+            <span class="proj__sprocket"></span>
+          </div>
+          <div class="proj__info">
+            <div class="proj__head">
+              <span class="proj__num">EXP.01</span>
+              <h3 class="proj__title">Swift Finance</h3>
+            </div>
+            <p class="proj__desc">Save money, make payments, and get loans easily. Manage your finances anywhere.</p>
+            <div class="proj__tags">
+              <span class="tag tag--code">React</span>
+            </div>
+          </div>
+        </a>
+      </article>
+
+      <!-- Project 2 -->
+      <article class="proj reveal reveal--d1">
+        <a href="https://todoly-app.netlify.app/" target="_blank" rel="noopener noreferrer" class="proj__link">
+          <div class="proj__film-border" aria-hidden="true">
+            <span class="proj__sprocket"></span>
+            <span class="proj__sprocket"></span>
+            <span class="proj__sprocket"></span>
+          </div>
+          <div class="proj__img">
+            <img src="../img/illustration/todoly.png" alt="Todoly" loading="lazy">
+            <div class="proj__overlay">
+              <span class="proj__view">View Project
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M17 7H9M17 7V15" stroke="currentColor" stroke-width="2"/></svg>
+              </span>
+            </div>
+          </div>
+          <div class="proj__film-border" aria-hidden="true">
+            <span class="proj__sprocket"></span>
+            <span class="proj__sprocket"></span>
+            <span class="proj__sprocket"></span>
+          </div>
+          <div class="proj__info">
+            <div class="proj__head">
+              <span class="proj__num">EXP.02</span>
+              <h3 class="proj__title">Todoly</h3>
+            </div>
+            <p class="proj__desc">A task management app with a clean, intuitive interface for daily tasks.</p>
+            <div class="proj__tags">
+              <span class="tag tag--code">React</span>
+              <span class="tag tag--code">GraphQL</span>
+            </div>
+          </div>
+        </a>
+      </article>
+
+      <!-- Project 3 -->
+      <article class="proj reveal">
+        <a href="https://teamily.netlify.app/" target="_blank" rel="noopener noreferrer" class="proj__link">
+          <div class="proj__film-border" aria-hidden="true">
+            <span class="proj__sprocket"></span>
+            <span class="proj__sprocket"></span>
+            <span class="proj__sprocket"></span>
+          </div>
+          <div class="proj__img">
+            <img src="../img/illustration/Team work app.png" alt="Team Work" loading="lazy">
+            <div class="proj__overlay">
+              <span class="proj__view">View Project
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M17 7H9M17 7V15" stroke="currentColor" stroke-width="2"/></svg>
+              </span>
+            </div>
+          </div>
+          <div class="proj__film-border" aria-hidden="true">
+            <span class="proj__sprocket"></span>
+            <span class="proj__sprocket"></span>
+            <span class="proj__sprocket"></span>
+          </div>
+          <div class="proj__info">
+            <div class="proj__head">
+              <span class="proj__num">EXP.03</span>
+              <h3 class="proj__title">Team Work</h3>
+            </div>
+            <p class="proj__desc">An internal social network for organizations — promoting team bonding.</p>
+            <div class="proj__tags">
+              <span class="tag tag--code">React</span>
+              <span class="tag tag--code">Node.js</span>
+              <span class="tag tag--code">PostgreSQL</span>
+            </div>
+          </div>
+        </a>
+      </article>
+
+      <!-- Project 4 -->
+      <article class="proj reveal reveal--d1">
+        <a href="https://github.com/oluwatobiloba2000" target="_blank" rel="noopener noreferrer" class="proj__link">
+          <div class="proj__film-border" aria-hidden="true">
+            <span class="proj__sprocket"></span>
+            <span class="proj__sprocket"></span>
+            <span class="proj__sprocket"></span>
+          </div>
+          <div class="proj__img">
+            <img src="../img/illustration/geo search.png" alt="Geo Search" loading="lazy">
+            <div class="proj__overlay">
+              <span class="proj__view">View Project
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M17 7H9M17 7V15" stroke="currentColor" stroke-width="2"/></svg>
+              </span>
+            </div>
+          </div>
+          <div class="proj__film-border" aria-hidden="true">
+            <span class="proj__sprocket"></span>
+            <span class="proj__sprocket"></span>
+            <span class="proj__sprocket"></span>
+          </div>
+          <div class="proj__info">
+            <div class="proj__head">
+              <span class="proj__num">EXP.04</span>
+              <h3 class="proj__title">Geo Search</h3>
+            </div>
+            <p class="proj__desc">Search for places and get timezone, weather, temperature, and map data.</p>
+            <div class="proj__tags">
+              <span class="tag tag--code">HTML</span>
+              <span class="tag tag--code">Google Maps</span>
+            </div>
+          </div>
+        </a>
+      </article>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       GALLERY — PROOF SHEET
+  ═══════════════════════════════════════════ -->
+  <section class="gallery" id="gallery">
+    <div class="container">
+      <div class="sec-head reveal">
+        <span class="sec-head__num">03</span>
+        <h2 class="sec-head__title">Gallery</h2>
+        <span class="sec-head__line"></span>
+        <span class="sec-head__meta">roll: 35mm</span>
+      </div>
+
+      <p class="gallery__intro reveal">Moments captured between deployments.</p>
+    </div>
+
+    <div class="gallery__proof container" id="gallery-grid">
+      <figure class="proof-img reveal" data-index="0">
+        <span class="proof-img__num" aria-hidden="true">FR.01</span>
+        <img src="https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?w=600&q=80" alt="Urban cityscape" loading="lazy">
+        <figcaption>
+          <span class="proof-img__title">Urban Light</span>
+          <span class="proof-img__loc">Lagos, Nigeria</span>
+        </figcaption>
+      </figure>
+
+      <figure class="proof-img proof-img--tall reveal reveal--d1" data-index="1">
+        <span class="proof-img__num" aria-hidden="true">FR.02</span>
+        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=600&q=80" alt="Portrait photography" loading="lazy">
+        <figcaption>
+          <span class="proof-img__title">Golden Hour</span>
+          <span class="proof-img__loc">Portrait Session</span>
+        </figcaption>
+      </figure>
+
+      <figure class="proof-img reveal" data-index="2">
+        <span class="proof-img__num" aria-hidden="true">FR.03</span>
+        <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?w=600&q=80" alt="Mountain landscape" loading="lazy">
+        <figcaption>
+          <span class="proof-img__title">Silent Peaks</span>
+          <span class="proof-img__loc">Landscape</span>
+        </figcaption>
+      </figure>
+
+      <figure class="proof-img reveal reveal--d1" data-index="3">
+        <span class="proof-img__num" aria-hidden="true">FR.04</span>
+        <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=600&q=80" alt="Scenic nature" loading="lazy">
+        <figcaption>
+          <span class="proof-img__title">Still Waters</span>
+          <span class="proof-img__loc">Nature</span>
+        </figcaption>
+      </figure>
+
+      <figure class="proof-img proof-img--wide reveal" data-index="4">
+        <span class="proof-img__num" aria-hidden="true">FR.05</span>
+        <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=600&q=80" alt="Coding setup" loading="lazy">
+        <figcaption>
+          <span class="proof-img__title">Late Night Code</span>
+          <span class="proof-img__loc">Home Studio</span>
+        </figcaption>
+      </figure>
+
+      <figure class="proof-img reveal reveal--d1" data-index="5">
+        <span class="proof-img__num" aria-hidden="true">FR.06</span>
+        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80" alt="Portrait" loading="lazy">
+        <figcaption>
+          <span class="proof-img__title">Candid</span>
+          <span class="proof-img__loc">Street Photography</span>
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       MARQUEE — Dual Ticker
+  ═══════════════════════════════════════════ -->
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker__row">
+      <div class="ticker__track">
+        <div class="ticker__content">
+          <span class="ticker__item ticker__item--code">&lt;React /&gt;</span>
+          <span class="ticker__sep">&#x25C6;</span>
+          <span class="ticker__item ticker__item--photo">f/1.8</span>
+          <span class="ticker__sep">&#x25C6;</span>
+          <span class="ticker__item ticker__item--code">TypeScript</span>
+          <span class="ticker__sep">&#x25C6;</span>
+          <span class="ticker__item ticker__item--photo">Golden Hour</span>
+          <span class="ticker__sep">&#x25C6;</span>
+          <span class="ticker__item ticker__item--code">Node.js</span>
+          <span class="ticker__sep">&#x25C6;</span>
+          <span class="ticker__item ticker__item--photo">ISO 800</span>
+          <span class="ticker__sep">&#x25C6;</span>
+          <span class="ticker__item ticker__item--code">PostgreSQL</span>
+          <span class="ticker__sep">&#x25C6;</span>
+          <span class="ticker__item ticker__item--photo">35mm</span>
+          <span class="ticker__sep">&#x25C6;</span>
+          <span class="ticker__item ticker__item--code">GraphQL</span>
+          <span class="ticker__sep">&#x25C6;</span>
+          <span class="ticker__item ticker__item--photo">Bokeh</span>
+          <span class="ticker__sep">&#x25C6;</span>
+          <span class="ticker__item ticker__item--code">Docker</span>
+          <span class="ticker__sep">&#x25C6;</span>
+          <span class="ticker__item ticker__item--photo">1/250s</span>
+          <span class="ticker__sep">&#x25C6;</span>
+        </div>
+        <div class="ticker__content">
+          <span class="ticker__item ticker__item--code">&lt;React /&gt;</span>
+          <span class="ticker__sep">&#x25C6;</span>
+          <span class="ticker__item ticker__item--photo">f/1.8</span>
+          <span class="ticker__sep">&#x25C6;</span>
+          <span class="ticker__item ticker__item--code">TypeScript</span>
+          <span class="ticker__sep">&#x25C6;</span>
+          <span class="ticker__item ticker__item--photo">Golden Hour</span>
+          <span class="ticker__sep">&#x25C6;</span>
+          <span class="ticker__item ticker__item--code">Node.js</span>
+          <span class="ticker__sep">&#x25C6;</span>
+          <span class="ticker__item ticker__item--photo">ISO 800</span>
+          <span class="ticker__sep">&#x25C6;</span>
+          <span class="ticker__item ticker__item--code">PostgreSQL</span>
+          <span class="ticker__sep">&#x25C6;</span>
+          <span class="ticker__item ticker__item--photo">35mm</span>
+          <span class="ticker__sep">&#x25C6;</span>
+          <span class="ticker__item ticker__item--code">GraphQL</span>
+          <span class="ticker__sep">&#x25C6;</span>
+          <span class="ticker__item ticker__item--photo">Bokeh</span>
+          <span class="ticker__sep">&#x25C6;</span>
+          <span class="ticker__item ticker__item--code">Docker</span>
+          <span class="ticker__sep">&#x25C6;</span>
+          <span class="ticker__item ticker__item--photo">1/250s</span>
+          <span class="ticker__sep">&#x25C6;</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       CONTACT
+  ═══════════════════════════════════════════ -->
+  <section class="contact" id="contact">
+    <div class="container">
+      <div class="sec-head reveal">
+        <span class="sec-head__num">04</span>
+        <h2 class="sec-head__title">Contact</h2>
+        <span class="sec-head__line"></span>
+        <span class="sec-head__meta">focus: collaborate</span>
+      </div>
+
+      <div class="contact__split">
+        <div class="contact__left reveal">
+          <h2 class="contact__heading">
+            Let's create<br>something <em>together.</em>
+          </h2>
+          <p class="contact__sub">
+            Whether you need a developer, a photographer, or someone who speaks both languages — I'd love to hear from you.
+          </p>
+          <a href="mailto:anani.tobi@gmail.com" class="contact__email">
+            anani.tobi@gmail.com
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M17 7H9M17 7V15" stroke="currentColor" stroke-width="1.5"/></svg>
+          </a>
+          <div class="contact__links">
+            <a href="https://github.com/oluwatobiloba2000" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a href="https://twitter.com/Anani_oluwatobi" target="_blank" rel="noopener noreferrer">X / Twitter</a>
+            <a href="https://www.linkedin.com/in/anani-oluwatobi/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            <a href="https://standardresume.co/r/QdquTFB9p7_ZnbSRKBfSe" target="_blank" rel="noopener noreferrer">Resume</a>
+          </div>
+        </div>
+
+        <form class="contact__form reveal reveal--d1" id="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+          <div class="field">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required autocomplete="name" placeholder="Your name">
+          </div>
+          <div class="field">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required autocomplete="email" placeholder="your@email.com">
+          </div>
+          <div class="field">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="5" required placeholder="Tell me about your project..."></textarea>
+          </div>
+          <button type="submit" class="contact__btn" id="submit-btn">
+            <span>Send Message</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12H19M19 12L13 6M19 12L13 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <p class="form-status" id="form-status"></p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       FOOTER
+  ═══════════════════════════════════════════ -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <span class="footer__left">
+        <span class="footer__bracket">[</span> Built by Tobby <span class="footer__bracket">]</span>
+      </span>
+      <span class="footer__right">
+        <span class="footer__meta">EXP. 2026</span>
+        <span class="footer__sep">/</span>
+        <span class="footer__meta">ROLL 03</span>
+        <span class="footer__sep">/</span>
+        <span class="footer__meta">NL</span>
+      </span>
+    </div>
+  </footer>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer">
+    <button class="lightbox__close" id="lightbox-close" aria-label="Close">&times;</button>
+    <button class="lightbox__arrow lightbox__arrow--prev" id="lightbox-prev" aria-label="Previous">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M19 12H5M5 12L11 6M5 12L11 18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <button class="lightbox__arrow lightbox__arrow--next" id="lightbox-next" aria-label="Next">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M5 12H19M19 12L13 6M19 12L13 18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <div class="lightbox__body">
+      <img class="lightbox__img" id="lightbox-img" src="" alt="">
+    </div>
+    <p class="lightbox__caption" id="lightbox-caption"></p>
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
