@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tobby — Software Engineer & Photographer</title>
+
+  <!-- SEO -->
+  <meta name="description" content="Tobby (Anani Oluwatobiloba) — Software engineer who builds things for the web and captures moments through a lens.">
+  <meta name="author" content="Anani Oluwatobiloba">
+  <meta property="og:title" content="Tobby — Software Engineer & Photographer">
+  <meta property="og:description" content="I build things for the web & capture moments through a lens.">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@Anani_oluwatobi">
+  <meta name="twitter:creator" content="@Anani_oluwatobi">
+
+  <!-- Favicon -->
+  <link rel="icon" href="../img/favicon.svg" type="image/svg+xml">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- Noise texture overlay -->
+  <div class="grain" aria-hidden="true"></div>
+
+  <!-- Custom cursor -->
+  <div class="cursor" id="cursor" aria-hidden="true">
+    <div class="cursor__dot"></div>
+    <div class="cursor__ring"></div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       NAVIGATION
+  ═══════════════════════════════════════════ -->
+  <header class="header" id="header">
+    <nav class="nav">
+      <a href="#" class="nav__brand">T.</a>
+
+      <ul class="nav__links" id="nav-links">
+        <li><a href="#about" class="nav__link" data-section="about">About</a></li>
+        <li><a href="#work" class="nav__link" data-section="work">Work</a></li>
+        <li><a href="#gallery" class="nav__link" data-section="gallery">Gallery</a></li>
+        <li><a href="#contact" class="nav__link" data-section="contact">Contact</a></li>
+      </ul>
+
+      <div class="nav__right">
+        <span class="nav__status">
+          <span class="nav__status-dot"></span>
+          Available for work
+        </span>
+        <button class="nav__menu-btn" id="menu-btn" aria-label="Toggle menu" aria-expanded="false">
+          <span class="nav__menu-btn-line"></span>
+          <span class="nav__menu-btn-line"></span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Mobile menu -->
+  <div class="mobile-nav" id="mobile-nav">
+    <div class="mobile-nav__inner">
+      <ul class="mobile-nav__links">
+        <li><a href="#about" class="mobile-nav__link"><span class="mobile-nav__link-num">01</span>About</a></li>
+        <li><a href="#work" class="mobile-nav__link"><span class="mobile-nav__link-num">02</span>Work</a></li>
+        <li><a href="#gallery" class="mobile-nav__link"><span class="mobile-nav__link-num">03</span>Gallery</a></li>
+        <li><a href="#contact" class="mobile-nav__link"><span class="mobile-nav__link-num">04</span>Contact</a></li>
+      </ul>
+      <div class="mobile-nav__footer">
+        <div class="mobile-nav__socials">
+          <a href="https://github.com/oluwatobiloba2000" target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a href="https://twitter.com/Anani_oluwatobi" target="_blank" rel="noopener noreferrer">X / Twitter</a>
+          <a href="https://www.linkedin.com/in/anani-oluwatobi/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       HERO
+  ═══════════════════════════════════════════ -->
+  <section class="hero" id="hero">
+    <div class="hero__container">
+      <div class="hero__eyebrow reveal">
+        <span class="hero__line"></span>
+        <span>Software Engineer & Photographer</span>
+      </div>
+
+      <h1 class="hero__title">
+        <span class="hero__title-line reveal">
+          <span class="hero__title-word">I build</span>
+        </span>
+        <span class="hero__title-line reveal reveal--d1">
+          <span class="hero__title-word"><em>experiences</em> for</span>
+        </span>
+        <span class="hero__title-line reveal reveal--d2">
+          <span class="hero__title-word">the web</span>
+        </span>
+      </h1>
+
+      <div class="hero__bottom">
+        <div class="hero__intro reveal reveal--d3">
+          <p>Lagos-based developer crafting clean, performant digital products — and capturing moments through a camera lens.</p>
+        </div>
+
+        <div class="hero__socials reveal reveal--d3">
+          <a href="https://github.com/oluwatobiloba2000" target="_blank" rel="noopener noreferrer" class="hero__social-link" data-cursor="link">
+            <span>GH</span>
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 11L11 1M11 1H3M11 1V9" stroke="currentColor" stroke-width="1.5"/></svg>
+          </a>
+          <a href="https://twitter.com/Anani_oluwatobi" target="_blank" rel="noopener noreferrer" class="hero__social-link" data-cursor="link">
+            <span>TW</span>
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 11L11 1M11 1H3M11 1V9" stroke="currentColor" stroke-width="1.5"/></svg>
+          </a>
+          <a href="https://www.linkedin.com/in/anani-oluwatobi/" target="_blank" rel="noopener noreferrer" class="hero__social-link" data-cursor="link">
+            <span>LI</span>
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 11L11 1M11 1H3M11 1V9" stroke="currentColor" stroke-width="1.5"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero__scroll">
+      <span>Scroll</span>
+      <div class="hero__scroll-bar"></div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       ABOUT
+  ═══════════════════════════════════════════ -->
+  <section class="about" id="about">
+    <div class="container">
+      <div class="section-label reveal">
+        <span class="section-label__num">01</span>
+        <span class="section-label__text">About</span>
+        <span class="section-label__line"></span>
+      </div>
+
+      <div class="about__bento">
+        <!-- Main text card -->
+        <div class="bento-card bento-card--text reveal">
+          <h2 class="about__heading">
+            I'm <em>Tobby</em> — a software engineer who turns ideas into
+            polished digital products.
+          </h2>
+          <p class="about__body">
+            Based in Lagos, I specialize in building full-stack web applications
+            — from fintech platforms to productivity tools. I care deeply about
+            clean code, thoughtful UX, and shipping things that matter.
+          </p>
+          <p class="about__body">
+            When I'm not writing code, you'll find me behind a camera lens,
+            capturing street scenes and portraits that tell stories.
+          </p>
+        </div>
+
+        <!-- Photo card -->
+        <div class="bento-card bento-card--photo reveal reveal--d1">
+          <img
+            src="https://res.cloudinary.com/djyyikoe7/image/upload/v1725373267/hr-YLM-9785-bewerkt_bdym1a.jpg"
+            alt="Tobby — Anani Oluwatobiloba"
+            loading="lazy"
+          >
+        </div>
+
+        <!-- Stats cards -->
+        <div class="bento-card bento-card--stat reveal reveal--d1">
+          <span class="stat__number">4+</span>
+          <span class="stat__label">Years Building<br>for the Web</span>
+        </div>
+
+        <div class="bento-card bento-card--stat reveal reveal--d2">
+          <span class="stat__number">20+</span>
+          <span class="stat__label">Projects<br>Shipped</span>
+        </div>
+
+        <!-- Skills card -->
+        <div class="bento-card bento-card--skills reveal reveal--d2">
+          <h3 class="skills__title">Stack</h3>
+          <div class="skills__grid">
+            <span class="skill-tag">JavaScript</span>
+            <span class="skill-tag">TypeScript</span>
+            <span class="skill-tag">React</span>
+            <span class="skill-tag">Next.js</span>
+            <span class="skill-tag">Node.js</span>
+            <span class="skill-tag">Express</span>
+            <span class="skill-tag">PostgreSQL</span>
+            <span class="skill-tag">MongoDB</span>
+            <span class="skill-tag">GraphQL</span>
+            <span class="skill-tag">Docker</span>
+            <span class="skill-tag">AWS</span>
+            <span class="skill-tag">Git</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       WORK / PROJECTS
+  ═══════════════════════════════════════════ -->
+  <section class="work" id="work">
+    <div class="container">
+      <div class="section-label reveal">
+        <span class="section-label__num">02</span>
+        <span class="section-label__text">Selected Work</span>
+        <span class="section-label__line"></span>
+      </div>
+    </div>
+
+    <div class="work__list">
+      <!-- Swift Finance -->
+      <article class="work-item reveal" data-cursor="project">
+        <a href="http://getswiftbank.com" target="_blank" rel="noopener noreferrer" class="work-item__link">
+          <div class="work-item__info">
+            <span class="work-item__num">01</span>
+            <div class="work-item__meta">
+              <h3 class="work-item__title">Swift Finance</h3>
+              <p class="work-item__desc">Save money, make payments, and get loans easily. Manage your finances anywhere with just your phone number.</p>
+              <div class="work-item__tags">
+                <span>React</span>
+              </div>
+            </div>
+          </div>
+          <div class="work-item__img">
+            <img src="../img/illustration/swiftbank.png" alt="Swift Finance" loading="lazy">
+          </div>
+          <div class="work-item__arrow">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M17 7H9M17 7V15" stroke="currentColor" stroke-width="1.5"/></svg>
+          </div>
+        </a>
+      </article>
+
+      <!-- Todoly -->
+      <article class="work-item reveal" data-cursor="project">
+        <a href="https://todoly-app.netlify.app/" target="_blank" rel="noopener noreferrer" class="work-item__link">
+          <div class="work-item__info">
+            <span class="work-item__num">02</span>
+            <div class="work-item__meta">
+              <h3 class="work-item__title">Todoly</h3>
+              <p class="work-item__desc">A task management app with a clean, intuitive interface for organizing daily tasks.</p>
+              <div class="work-item__tags">
+                <span>React</span>
+                <span>GraphQL</span>
+              </div>
+            </div>
+          </div>
+          <div class="work-item__img">
+            <img src="../img/illustration/todoly.png" alt="Todoly" loading="lazy">
+          </div>
+          <div class="work-item__arrow">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M17 7H9M17 7V15" stroke="currentColor" stroke-width="1.5"/></svg>
+          </div>
+        </a>
+      </article>
+
+      <!-- Team Work -->
+      <article class="work-item reveal" data-cursor="project">
+        <a href="https://teamily.netlify.app/" target="_blank" rel="noopener noreferrer" class="work-item__link">
+          <div class="work-item__info">
+            <span class="work-item__num">03</span>
+            <div class="work-item__meta">
+              <h3 class="work-item__title">Team Work</h3>
+              <p class="work-item__desc">An internal social network for organizations — facilitating interaction and promoting team bonding.</p>
+              <div class="work-item__tags">
+                <span>React</span>
+                <span>Node.js</span>
+                <span>Express</span>
+                <span>PostgreSQL</span>
+              </div>
+            </div>
+          </div>
+          <div class="work-item__img">
+            <img src="../img/illustration/Team work app.png" alt="Team Work" loading="lazy">
+          </div>
+          <div class="work-item__arrow">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M17 7H9M17 7V15" stroke="currentColor" stroke-width="1.5"/></svg>
+          </div>
+        </a>
+      </article>
+
+      <!-- Geo Search -->
+      <article class="work-item reveal" data-cursor="project">
+        <a href="https://github.com/oluwatobiloba2000" target="_blank" rel="noopener noreferrer" class="work-item__link">
+          <div class="work-item__info">
+            <span class="work-item__num">04</span>
+            <div class="work-item__meta">
+              <h3 class="work-item__title">Geo Search</h3>
+              <p class="work-item__desc">Search for places and get timezone, map, weather conditions, temperature, wind speed, and more.</p>
+              <div class="work-item__tags">
+                <span>HTML</span>
+                <span>Google Maps API</span>
+                <span>OpenWeather</span>
+              </div>
+            </div>
+          </div>
+          <div class="work-item__img">
+            <img src="../img/illustration/geo search.png" alt="Geo Search" loading="lazy">
+          </div>
+          <div class="work-item__arrow">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M17 7H9M17 7V15" stroke="currentColor" stroke-width="1.5"/></svg>
+          </div>
+        </a>
+      </article>
+
+      <!-- Trimer -->
+      <article class="work-item reveal" data-cursor="project">
+        <a href="https://github.com/oluwatobiloba2000/trimer" target="_blank" rel="noopener noreferrer" class="work-item__link">
+          <div class="work-item__info">
+            <span class="work-item__num">05</span>
+            <div class="work-item__meta">
+              <h3 class="work-item__title">Trimer</h3>
+              <p class="work-item__desc">A URL shortener that converts long URLs into clean, condensed links with a RESTful API.</p>
+              <div class="work-item__tags">
+                <span>MongoDB</span>
+                <span>Node.js</span>
+                <span>Express</span>
+              </div>
+            </div>
+          </div>
+          <div class="work-item__img work-item__img--empty">
+            <span class="work-item__img-placeholder">API</span>
+          </div>
+          <div class="work-item__arrow">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M17 7H9M17 7V15" stroke="currentColor" stroke-width="1.5"/></svg>
+          </div>
+        </a>
+      </article>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       GALLERY
+  ═══════════════════════════════════════════ -->
+  <section class="gallery" id="gallery">
+    <div class="container">
+      <div class="section-label reveal">
+        <span class="section-label__num">03</span>
+        <span class="section-label__text">Through the Lens</span>
+        <span class="section-label__line"></span>
+      </div>
+
+      <p class="gallery__intro reveal">Moments captured between lines of code.</p>
+    </div>
+
+    <div class="gallery__grid" id="gallery-grid">
+      <figure class="gallery__item reveal" data-index="0">
+        <img src="https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?w=600&q=80" alt="Urban cityscape" loading="lazy">
+        <figcaption>
+          <span class="gallery__item-title">Urban Light</span>
+          <span class="gallery__item-loc">Lagos, Nigeria</span>
+        </figcaption>
+      </figure>
+
+      <figure class="gallery__item gallery__item--tall reveal reveal--d1" data-index="1">
+        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=600&q=80" alt="Portrait photography" loading="lazy">
+        <figcaption>
+          <span class="gallery__item-title">Golden Hour</span>
+          <span class="gallery__item-loc">Portrait Session</span>
+        </figcaption>
+      </figure>
+
+      <figure class="gallery__item reveal" data-index="2">
+        <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?w=600&q=80" alt="Mountain landscape" loading="lazy">
+        <figcaption>
+          <span class="gallery__item-title">Silent Peaks</span>
+          <span class="gallery__item-loc">Landscape</span>
+        </figcaption>
+      </figure>
+
+      <figure class="gallery__item reveal reveal--d1" data-index="3">
+        <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=600&q=80" alt="Scenic nature" loading="lazy">
+        <figcaption>
+          <span class="gallery__item-title">Still Waters</span>
+          <span class="gallery__item-loc">Nature</span>
+        </figcaption>
+      </figure>
+
+      <figure class="gallery__item gallery__item--wide reveal" data-index="4">
+        <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=600&q=80" alt="Coding setup" loading="lazy">
+        <figcaption>
+          <span class="gallery__item-title">Late Night Code</span>
+          <span class="gallery__item-loc">Home Studio</span>
+        </figcaption>
+      </figure>
+
+      <figure class="gallery__item reveal reveal--d1" data-index="5">
+        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80" alt="Portrait" loading="lazy">
+        <figcaption>
+          <span class="gallery__item-title">Candid</span>
+          <span class="gallery__item-loc">Street Photography</span>
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       MARQUEE
+  ═══════════════════════════════════════════ -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee__track">
+      <div class="marquee__content">
+        <span>React</span><span class="marquee__dot"></span>
+        <span>TypeScript</span><span class="marquee__dot"></span>
+        <span>Node.js</span><span class="marquee__dot"></span>
+        <span>PostgreSQL</span><span class="marquee__dot"></span>
+        <span>Next.js</span><span class="marquee__dot"></span>
+        <span>Photography</span><span class="marquee__dot"></span>
+        <span>GraphQL</span><span class="marquee__dot"></span>
+        <span>Docker</span><span class="marquee__dot"></span>
+        <span>MongoDB</span><span class="marquee__dot"></span>
+        <span>Express</span><span class="marquee__dot"></span>
+        <span>AWS</span><span class="marquee__dot"></span>
+        <span>Figma</span><span class="marquee__dot"></span>
+      </div>
+      <div class="marquee__content">
+        <span>React</span><span class="marquee__dot"></span>
+        <span>TypeScript</span><span class="marquee__dot"></span>
+        <span>Node.js</span><span class="marquee__dot"></span>
+        <span>PostgreSQL</span><span class="marquee__dot"></span>
+        <span>Next.js</span><span class="marquee__dot"></span>
+        <span>Photography</span><span class="marquee__dot"></span>
+        <span>GraphQL</span><span class="marquee__dot"></span>
+        <span>Docker</span><span class="marquee__dot"></span>
+        <span>MongoDB</span><span class="marquee__dot"></span>
+        <span>Express</span><span class="marquee__dot"></span>
+        <span>AWS</span><span class="marquee__dot"></span>
+        <span>Figma</span><span class="marquee__dot"></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       CONTACT
+  ═══════════════════════════════════════════ -->
+  <section class="contact" id="contact">
+    <div class="container">
+      <div class="section-label reveal">
+        <span class="section-label__num">04</span>
+        <span class="section-label__text">Get in Touch</span>
+        <span class="section-label__line"></span>
+      </div>
+
+      <div class="contact__layout">
+        <div class="contact__left reveal">
+          <h2 class="contact__heading">
+            Let's work<br><em>together.</em>
+          </h2>
+          <p class="contact__subtext">
+            I'm open to freelance projects, collaboration, or just a friendly chat about code and cameras.
+          </p>
+
+          <div class="contact__details">
+            <a href="mailto:anani.tobi@gmail.com" class="contact__email" data-cursor="link">
+              anani.tobi@gmail.com
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M17 7H9M17 7V15" stroke="currentColor" stroke-width="1.5"/></svg>
+            </a>
+
+            <div class="contact__social-row">
+              <a href="https://github.com/oluwatobiloba2000" target="_blank" rel="noopener noreferrer" data-cursor="link">GitHub</a>
+              <a href="https://twitter.com/Anani_oluwatobi" target="_blank" rel="noopener noreferrer" data-cursor="link">X / Twitter</a>
+              <a href="https://www.linkedin.com/in/anani-oluwatobi/" target="_blank" rel="noopener noreferrer" data-cursor="link">LinkedIn</a>
+              <a href="https://standardresume.co/r/QdquTFB9p7_ZnbSRKBfSe" target="_blank" rel="noopener noreferrer" data-cursor="link">Resume</a>
+            </div>
+          </div>
+        </div>
+
+        <form class="contact__form reveal reveal--d1" id="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+          <div class="form-field">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required autocomplete="name" placeholder="Your name">
+          </div>
+          <div class="form-field">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required autocomplete="email" placeholder="your@email.com">
+          </div>
+          <div class="form-field">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="5" required placeholder="Tell me about your project..."></textarea>
+          </div>
+          <button type="submit" class="contact__submit" id="submit-btn" data-cursor="link">
+            <span>Send Message</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 12H19M19 12L13 6M19 12L13 18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <p class="form-status" id="form-status"></p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       FOOTER
+  ═══════════════════════════════════════════ -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <span class="footer__copy">Designed & Built by Tobby</span>
+      <span class="footer__year">2026</span>
+    </div>
+  </footer>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer">
+    <button class="lightbox__close" id="lightbox-close" aria-label="Close">&times;</button>
+    <button class="lightbox__nav lightbox__nav--prev" id="lightbox-prev" aria-label="Previous">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M19 12H5M5 12L11 6M5 12L11 18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <button class="lightbox__nav lightbox__nav--next" id="lightbox-next" aria-label="Next">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M5 12H19M19 12L13 6M19 12L13 18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <div class="lightbox__body">
+      <img class="lightbox__img" id="lightbox-img" src="" alt="">
+    </div>
+    <p class="lightbox__caption" id="lightbox-caption"></p>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/main.js"></script>
+</body>
+</html>

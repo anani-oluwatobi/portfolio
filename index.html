@@ -1,291 +1,527 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="title" property="og:title" content="Anani Oluwatobiloba's portfolio" />
-    <meta name="image" property="og:image" content="https://res.cloudinary.com/oluwatobby/image/upload/v1629381208/portfolio_site_nbuvry.png" />
-    <meta name="description" property="og:description" content="Software Engineer" />
-    <meta name="author" content="Anani Oluwatobiloba" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tobby — Software Engineer & Photographer</title>
 
-    <!-- twitter crawler -->
-    <meta name="twitter:card" content="Anani Oluwatobiloba || Software Engineer" />
-    <meta name="twitter:site" content="@Anani_oluwatobi" />
-    <meta name="twitter:creator" content="@Anani_oluwatobi" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="shortcut icon" href="leaf-pink-round.ico" type="image/x-icon">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
-    <link rel="stylesheet" href="./index.css">
-    <title>Anani Oluwatobiloba</title>
+  <!-- SEO -->
+  <meta name="description" content="Tobby (Anani Oluwatobiloba) — Software engineer who builds things for the web and captures moments through a lens.">
+  <meta name="author" content="Anani Oluwatobiloba">
+  <meta property="og:title" content="Tobby — Software Engineer & Photographer">
+  <meta property="og:description" content="I build things for the web & capture moments through a lens.">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@Anani_oluwatobi">
+  <meta name="twitter:creator" content="@Anani_oluwatobi">
+
+  <!-- Favicon -->
+  <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
 </head>
 <body>
-    <header>
-        <nav id="tb-navbar" class="tb-navbar fixed-top navbar navbar-expand-lg navbar-dark">
-            <div class="container-fluid ">
-              <a aria-label="tobi portfolio" class="nav-first-name navbar-brand" href="#">Tobby</a>
-              <a aria-label="tobi portfolio" class="nav-second-name navbar-brand" href="#">Anani Oluwatobiloba</a>
 
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-            </div>
+  <!-- ═══════════════════════════════════════════
+       NAVIGATION
+  ═══════════════════════════════════════════ -->
+  <nav class="nav" id="nav">
+    <a href="#" class="nav__brand">Tobby.</a>
 
-              <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                  <li class="nav-item">
-                    <a class="nav-link" aria-label="home" aria-current="page" href="#">HOME</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" aria-label="about" href="#about-me">ABOUT</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" aria-label="resume" href="https://standardresume.co/r/QdquTFB9p7_ZnbSRKBfSe" target="_blank" rel="noopener noreferrer">RESUME</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" aria-label="portfolio" href="#portfolio">PORTFOLIO</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" aria-label="contact" href="#contact-me">CONTACT</a>
-                  </li>
-                </ul>
-              </div>
-          </nav>
-        </header>
+    <ul class="nav__links" id="nav-links">
+      <li><a href="#hero" class="nav__link active" data-section="hero">Home</a></li>
+      <li><a href="#about" class="nav__link" data-section="about">About</a></li>
+      <li><a href="#projects" class="nav__link" data-section="projects">Projects</a></li>
+      <li><a href="#gallery" class="nav__link" data-section="gallery">Gallery</a></li>
+      <li><a href="#contact" class="nav__link" data-section="contact">Contact</a></li>
+    </ul>
 
-        <section class="hero-section" id="hero-section">
-            <div class="container">
-                <div class="row">
-                    <div class="tb-hero-title-container col-lg-11 mx-auto">
-                        <h1 class="tb-hero-title text-white font-tertiary">Hi! I’m <br> Oluwatobiloba <br> Software Engineer</h1>
-                    </div>
-                </div>
-            </div>
+    <button class="nav__hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </nav>
 
-            <div class="layer-bg w-100">
-              <img class="img-fluid w-100" src="./img/illustration/leaf-bg.png" alt="bg-shape">
-            </div>
+  <!-- Mobile overlay menu -->
+  <div class="mobile-menu" id="mobile-menu">
+    <ul class="mobile-menu__links">
+      <li><a href="#hero" class="mobile-menu__link">Home</a></li>
+      <li><a href="#about" class="mobile-menu__link">About</a></li>
+      <li><a href="#projects" class="mobile-menu__link">Projects</a></li>
+      <li><a href="#gallery" class="mobile-menu__link">Gallery</a></li>
+      <li><a href="#contact" class="mobile-menu__link">Contact</a></li>
+    </ul>
+  </div>
 
-            <div class="layer-bg w-100">
-              <img class="img-fluid w-100" src="./img/illustration/leaf-bg.png" alt="bg-shape">
-            </div>
-            <div class="layer" id="l2">
-              <img src="./img/illustration/dots-cyan.png" alt="bg-shape">
-            </div>
-            <div class="layer" id="l3">
-              <img src="./img/illustration/leaf-orange.png" alt="bg-shape">
-            </div>
-            <div class="layer" id="l5">
-              <img src="./img/illustration/leaf-yellow.png" alt="bg-shape">
-            </div>
-            <div class="layer" id="l8">
-              <img src="./img/illustration/leaf-pink-round.png" alt="bg-shape">
-            </div>
-            <div class="layer" id="l9">
-              <img src="./img/illustration/leaf-cyan-2.png" alt="bg-shape">
-            </div>
+  <!-- ═══════════════════════════════════════════
+       HERO
+  ═══════════════════════════════════════════ -->
+  <section class="hero" id="hero">
+    <div class="hero__spotlight" id="hero-spotlight"></div>
 
+    <div class="hero__content">
+      <h1 class="hero__name reveal">Tobby</h1>
+      <p class="hero__tagline reveal reveal--delay-1">
+        I build things for the web &amp;<br>capture moments through a lens.
+      </p>
 
-            <!-- special media-->
-          <div class="social-container">
-            <div>
-                <a aria-label="github" target="_blank" rel="noopener noreferrer" href="http://github.com/oluwatobiloba2000">
-                    <svg fill="white" xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-                </a>
-
-                <a target="_blank" aria-label="twitter" rel="noopener noreferrer" href="https://twitter.com/Anani_oluwatobi">
-                   <img width="40px" height="40px" src="./img/illustration/tw.png" alt="twitter">
-                </a>
-
-                <a target="_blank" aria-label="linkedin" rel="noopener noreferrer" href="https://www.linkedin.com/in/anani-oluwatobi/">
-                    <svg fill="white" xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-                </a>
-            </div>
-          </div>
-
-          <img class="hero-dot-group-attachment" src="./img/illustration/dots-group-v.png" alt=""> 
-          <img class="dev-attachment" src="./img/illustration/dev.svg" alt="dev">
-    </section>
-
-    <!-- about me section -->
-    <section class="about-section">
-      <hr id="about-me"/>
-      <div class="about-me-container">
-        <div class="about-me-container-text">
-          <!-- <h1>About Me</h1> -->
-          <p>
-            ✨ I am an enthusiastic software engineer eager to contribute to team success through hard work, attention to detail, and excellent organizational, problem-solving, work ethic, and adaptability skills.
-          </p>
-          <p>
-            <strong>Programming languages:</strong>
-            Javascript, SQL
-          <br/>
-            <strong>Platform and Frameworks</strong>
-            Git(Github), Node Js/Express, PostgreSQL, React, Redux,  Mocha/Chai,
-            Travis, Heroku, Cloudinary, Google APIs, npm, Rest APIs.
-          </p>
-          <p>I am Mostly interested in building automated systems for
-            businesses using tech, love running road marathons.
-          </p>
-        </div>
-        <img src="https://res.cloudinary.com/djyyikoe7/image/upload/v1725373267/hr-YLM-9785-bewerkt_bdym1a.jpg" alt="">
+      <div class="hero__socials reveal reveal--delay-2">
+        <a href="https://github.com/oluwatobiloba2000" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+        </a>
+        <a href="https://twitter.com/Anani_oluwatobi" target="_blank" rel="noopener noreferrer" aria-label="Twitter / X">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        </a>
+        <a href="https://www.linkedin.com/in/anani-oluwatobi/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+        </a>
       </div>
-    </section>
-
-
-    <section class="section-3" id="portfolio" >
-      <img class="section-3-attachment-1" src="./img/illustration/dots-group-v.png" alt=""> 
-      <img class="section-3-attachment-2" src="./img/illustration/leaf-orange.png" alt="">
-      <img class="section-3-attachment-3" src="./img/illustration/dots-group-sm.png" alt="">
-      <h2 class="portfolio-header">Portfolio</h2>
-
-      <div class="portfolio-card-container">
-        <div class="card" style="width: 18rem;">
-          <img height="150px" width="286px" src="./img/illustration/swiftbank.png" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h3 class="card-title">Swift Finance</h3>
-            <p class="card-text">With Swift finance you can Save money, make payments and get loans easily. Manage your money anywhere you go around the world with just your phone number.</p>
-
-            <p class="card-text portfolio-stack">
-               ReactJs
-            </p>
-
-            <div class="portfolio-links">
-              <a aria-label="view live" title="view live" href="http://getswiftbank.com" target="_blank" rel="noopener noreferrer">
-                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24"><path d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></svg>              </a>
-            </div>
-          </div>
-      </div>
-
-      <div class="card" style="width: 18rem;">
-        <img height="150px" width="286px" src="./img/illustration/todoly.png" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h3 class="card-title">Todoly</h3>
-          <p class="card-text">Todoly is an application that helps you organize your daily tasks</p>
-
-          <p class="card-text portfolio-stack">
-             ReactJs   |   GraphQl
-          </p>
-
-          <div class="portfolio-links">
-            <a aria-label="visit github" title="visit github" href="https://github.com/oluwatobiloba2000/Todoly">
-              <svg style="margin-right: 15px;" class="github-icon"  xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-            </a>
-
-
-            <a aria-label="view live" title="view live" href="https://todoly-app.netlify.app/" target="_blank" rel="noopener noreferrer">
-              <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24"><path d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></svg>              </a>
-          </div>
-        </div>
     </div>
 
-    <div class="card" style="width: 18rem;">
-      <img height="150px" width="286px" src="./img/illustration/Team work app.png" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h3 class="card-title">Team Work App</h5>
-        <p class="card-text">Teamwork is an internal social network for employees of an organization. The goal of this application is to facilitate more interaction between colleagues and promote team bonding</p>
-
-        <p class="card-text portfolio-stack">
-          REACTJS | NODE.JS | EXPRESS | POSTGRESQL
-        </p>
-
-        <div class="portfolio-links">
-          <a aria-label="visit github" title="visit github" href="https://github.com/oluwatobiloba2000/team-work">
-            <svg style="margin-right: 15px;" class="github-icon"  xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-          </a>
-
-
-          <a aria-label="view live" title="view live" href="https://teamily.netlify.app/" target="_blank" rel="noopener noreferrer">
-            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24"><path d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></svg>              </a>
-        </div>
-        </div>
-       </div>
-
-       <div class="card" style="width: 18rem;">
-        <img height="150px" width="286px" src="./img/illustration/geo search.png" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h3 class="card-title">Geo Search App</h3>
-          <p class="card-text">Geo-Search is a tool that allows people to search for places and extract information such as timezone, map and local weather conditions like temperature, wind speed, humidity, and precipitation.</p>
-
-          <p class="card-text portfolio-stack">
-            HTML | Google Maps API | Google place API | Open weather API.
-          </p>
-
-          <div class="portfolio-links">
-            <a aria-label="visit github" title="visit github" href="http://">
-              <svg style="margin-right: 15px;" class="github-icon"  xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-            </a>
-
-            <a aria-label="view live" title="view live" href="http://getswiftbank.com" target="_blank" rel="noopener noreferrer">
-              <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24"><path d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></svg>              </a>
-          </div>
-          </div>
-         </div>
-
-      <div class="double-card-flex-column" style="width: 18rem">
-         <div class="card double-card" style="width: 18rem">
-           <div class="card-body">
-              <h3 class="card-title">Trimer</h5>
-              <p class="card-text">Trimmer is an application that converts regular URL into its condensed format</p>
-              <p class="card-text portfolio-stack">
-                MONGO DB | NODEJS | EXPRESS JS
-              </p>
-              <div class="portfolio-links">
-                <a  aria-label="visit github" title="visit github" href="https://github.com/oluwatobiloba2000/trimer">
-                  <svg class="github-icon"  xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-                </a>
-               </div>
-            </div>
-           </div>
-
-           <!-- <div class="card" style="width: 18rem;">
-            <div class="card-body">
-               <h5 class="card-title">Trimer</h5>
-               <p class="card-text">Trimmer is an application that converts regular URL into its condensed format</p>
-               <p class="card-text portfolio-stack">
-                 MONGO DB | NODEJS | EXPRESS JS
-               </p>
-               <div class="portfolio-links">
-                 <a title="visit github" href="https://github.com/oluwatobiloba2000/trimer">
-                   <svg class="github-icon"  xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-                 </a>
-                </div>
-             </div> -->
-            </div>
-         </div>
-
-      </div>
-    </section>
-
-  <section class="contact-section" id="contact-me" backgroundColor="white">
-    <h2 class="contact-header-text">Contact Me</h2>
-    <p >You can reach out to me 🎉</p>
-    <div class="contact-social-media">
-         <!-- special media logins-->
-
-          <div>
-              <a target="_blank" aria-label="github" rel="noopener noreferrer" href="http://github.com/oluwatobiloba2000">
-                  <svg fill="black" xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-              </a>
-
-              <a rel="noopener noreferrer" aria-label="twitter" target="_blank" href="https://twitter.com/Anani_oluwatobi">
-                 <img width="40px" height="40px" src="./img/illustration/tw.png" alt="twitter">
-              </a>
-
-              <a rel="noopener noreferrer" aria-label="linkedin" target="_blank" href="https://www.linkedin.com/in/anani-oluwatobi/">
-                  <svg fill="#0072b1" xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-              </a>
-          </div>
-
-        <a rel="noopener noreferrer" aria-label="email address" target="_blank" href="mailto:anani.tobi@gmail.com">anani.tobi@gmail.com</a>
+    <div class="hero__scroll-hint">
+      <span>scroll</span>
+      <div class="hero__scroll-line"></div>
     </div>
   </section>
 
+  <!-- ═══════════════════════════════════════════
+       ABOUT
+  ═══════════════════════════════════════════ -->
+  <section class="about" id="about">
+    <div class="container">
+      <h2 class="section-title reveal">About Me</h2>
 
-  <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
-    <script src="./index.js"></script>
+      <div class="about__grid">
+        <div class="about__text reveal">
+          <p>
+            Hey there! I'm Tobby — a software engineer based in Lagos who's passionate about
+            crafting clean, performant web experiences. I love taking an idea from concept to
+            production, whether that's building fintech apps, productivity tools, or full-stack
+            platforms.
+          </p>
+          <p>
+            When I'm not writing code, you'll find me behind a camera lens capturing street
+            scenes, portraits, and moments that tell stories. I believe both coding and
+            photography share the same core: attention to detail and a desire to create
+            something meaningful.
+          </p>
+          <p>
+            I'm always curious, always building, and always looking for the next challenge.
+          </p>
 
+          <div class="about__pills">
+            <span class="pill">JavaScript</span>
+            <span class="pill">TypeScript</span>
+            <span class="pill">React</span>
+            <span class="pill">Node.js</span>
+            <span class="pill">PostgreSQL</span>
+            <span class="pill">GraphQL</span>
+            <span class="pill">Express</span>
+            <span class="pill">MongoDB</span>
+            <span class="pill">Git</span>
+            <span class="pill">REST APIs</span>
+            <span class="pill">Photography</span>
+          </div>
+        </div>
+
+        <div class="about__photo reveal reveal--delay-1">
+          <img
+            src="https://res.cloudinary.com/djyyikoe7/image/upload/v1725373267/hr-YLM-9785-bewerkt_bdym1a.jpg"
+            alt="Tobby — Anani Oluwatobiloba"
+            loading="lazy"
+          >
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       PROJECTS
+  ═══════════════════════════════════════════ -->
+  <section class="projects" id="projects">
+    <div class="container">
+      <h2 class="section-title reveal">Projects</h2>
+
+      <div class="projects__grid">
+        <!-- Swift Finance -->
+        <article class="project-card reveal">
+          <div class="project-card__img">
+            <img src="img/illustration/swiftbank.png" alt="Swift Finance screenshot" loading="lazy">
+          </div>
+          <div class="project-card__body">
+            <h3 class="project-card__title">Swift Finance</h3>
+            <p class="project-card__desc">
+              Save money, make payments, and get loans easily. Manage your finances
+              anywhere with just your phone number.
+            </p>
+            <div class="project-card__stack">
+              <span class="pill pill--sm">React</span>
+            </div>
+            <div class="project-card__links">
+              <a href="http://getswiftbank.com" target="_blank" rel="noopener noreferrer" class="project-card__link">
+                Live <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></svg>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Todoly -->
+        <article class="project-card reveal reveal--delay-1">
+          <div class="project-card__img">
+            <img src="img/illustration/todoly.png" alt="Todoly screenshot" loading="lazy">
+          </div>
+          <div class="project-card__body">
+            <h3 class="project-card__title">Todoly</h3>
+            <p class="project-card__desc">
+              A task management app that helps you organize daily tasks with a
+              clean, intuitive interface.
+            </p>
+            <div class="project-card__stack">
+              <span class="pill pill--sm">React</span>
+              <span class="pill pill--sm">GraphQL</span>
+            </div>
+            <div class="project-card__links">
+              <a href="https://github.com/oluwatobiloba2000/Todoly" target="_blank" rel="noopener noreferrer" class="project-card__link">
+                Code <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+              </a>
+              <a href="https://todoly-app.netlify.app/" target="_blank" rel="noopener noreferrer" class="project-card__link">
+                Live <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></svg>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Team Work App -->
+        <article class="project-card reveal reveal--delay-2">
+          <div class="project-card__img">
+            <img src="img/illustration/Team work app.png" alt="Team Work App screenshot" loading="lazy">
+          </div>
+          <div class="project-card__body">
+            <h3 class="project-card__title">Team Work</h3>
+            <p class="project-card__desc">
+              An internal social network for organizations — facilitating interaction
+              between colleagues and promoting team bonding.
+            </p>
+            <div class="project-card__stack">
+              <span class="pill pill--sm">React</span>
+              <span class="pill pill--sm">Node.js</span>
+              <span class="pill pill--sm">Express</span>
+              <span class="pill pill--sm">PostgreSQL</span>
+            </div>
+            <div class="project-card__links">
+              <a href="https://github.com/oluwatobiloba2000/team-work" target="_blank" rel="noopener noreferrer" class="project-card__link">
+                Code <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+              </a>
+              <a href="https://teamily.netlify.app/" target="_blank" rel="noopener noreferrer" class="project-card__link">
+                Live <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></svg>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Geo Search -->
+        <article class="project-card reveal">
+          <div class="project-card__img">
+            <img src="img/illustration/geo search.png" alt="Geo Search App screenshot" loading="lazy">
+          </div>
+          <div class="project-card__body">
+            <h3 class="project-card__title">Geo Search</h3>
+            <p class="project-card__desc">
+              Search for places and get timezone, map, weather conditions, temperature,
+              wind speed, humidity, and precipitation data.
+            </p>
+            <div class="project-card__stack">
+              <span class="pill pill--sm">HTML</span>
+              <span class="pill pill--sm">Google Maps API</span>
+              <span class="pill pill--sm">OpenWeather API</span>
+            </div>
+            <div class="project-card__links">
+              <a href="https://github.com/oluwatobiloba2000" target="_blank" rel="noopener noreferrer" class="project-card__link">
+                Code <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Trimer -->
+        <article class="project-card reveal reveal--delay-1">
+          <div class="project-card__body project-card__body--no-img">
+            <h3 class="project-card__title">Trimer</h3>
+            <p class="project-card__desc">
+              A URL shortener that converts long URLs into clean, condensed links.
+              Built with a RESTful API architecture.
+            </p>
+            <div class="project-card__stack">
+              <span class="pill pill--sm">MongoDB</span>
+              <span class="pill pill--sm">Node.js</span>
+              <span class="pill pill--sm">Express</span>
+            </div>
+            <div class="project-card__links">
+              <a href="https://github.com/oluwatobiloba2000/trimer" target="_blank" rel="noopener noreferrer" class="project-card__link">
+                Code <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+              </a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       PHOTO GALLERY
+  ═══════════════════════════════════════════ -->
+  <section class="gallery" id="gallery">
+    <div class="container">
+      <h2 class="section-title reveal">Gallery</h2>
+      <p class="gallery__subtitle reveal">Moments captured through my lens</p>
+
+      <div class="gallery__masonry" id="gallery-grid">
+        <!-- Placeholder gallery items — replace src with real photos -->
+        <figure class="gallery__item reveal" data-index="0">
+          <img src="https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?w=600&q=80" alt="Urban cityscape" loading="lazy">
+          <figcaption class="gallery__overlay">
+            <span class="gallery__photo-title">Urban Light</span>
+            <span class="gallery__photo-location">Lagos, Nigeria</span>
+          </figcaption>
+        </figure>
+
+        <figure class="gallery__item reveal reveal--delay-1" data-index="1">
+          <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=600&q=80" alt="Portrait photography" loading="lazy">
+          <figcaption class="gallery__overlay">
+            <span class="gallery__photo-title">Golden Hour</span>
+            <span class="gallery__photo-location">Portrait Session</span>
+          </figcaption>
+        </figure>
+
+        <figure class="gallery__item reveal" data-index="2">
+          <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?w=600&q=80" alt="Mountain landscape" loading="lazy">
+          <figcaption class="gallery__overlay">
+            <span class="gallery__photo-title">Silent Peaks</span>
+            <span class="gallery__photo-location">Landscape</span>
+          </figcaption>
+        </figure>
+
+        <figure class="gallery__item reveal reveal--delay-1" data-index="3">
+          <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=600&q=80" alt="Scenic nature" loading="lazy">
+          <figcaption class="gallery__overlay">
+            <span class="gallery__photo-title">Still Waters</span>
+            <span class="gallery__photo-location">Nature</span>
+          </figcaption>
+        </figure>
+
+        <figure class="gallery__item reveal" data-index="4">
+          <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=600&q=80" alt="Coding setup" loading="lazy">
+          <figcaption class="gallery__overlay">
+            <span class="gallery__photo-title">Late Night Code</span>
+            <span class="gallery__photo-location">Home Studio</span>
+          </figcaption>
+        </figure>
+
+        <figure class="gallery__item reveal reveal--delay-1" data-index="5">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80" alt="Portrait" loading="lazy">
+          <figcaption class="gallery__overlay">
+            <span class="gallery__photo-title">Candid</span>
+            <span class="gallery__photo-location">Street Photography</span>
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       SKILLS MARQUEE
+  ═══════════════════════════════════════════ -->
+  <section class="skills" id="skills">
+    <div class="container">
+      <h2 class="section-title reveal">Skills &amp; Tools</h2>
+    </div>
+
+    <div class="marquee">
+      <div class="marquee__track">
+        <div class="marquee__content" aria-hidden="false">
+          <span class="marquee__tag">JavaScript</span>
+          <span class="marquee__tag">TypeScript</span>
+          <span class="marquee__tag">React</span>
+          <span class="marquee__tag">Next.js</span>
+          <span class="marquee__tag">Node.js</span>
+          <span class="marquee__tag">Express</span>
+          <span class="marquee__tag">PostgreSQL</span>
+          <span class="marquee__tag">MongoDB</span>
+          <span class="marquee__tag">GraphQL</span>
+          <span class="marquee__tag">REST APIs</span>
+          <span class="marquee__tag">Git</span>
+          <span class="marquee__tag">Docker</span>
+        </div>
+        <!-- Duplicate for seamless loop -->
+        <div class="marquee__content" aria-hidden="true">
+          <span class="marquee__tag">JavaScript</span>
+          <span class="marquee__tag">TypeScript</span>
+          <span class="marquee__tag">React</span>
+          <span class="marquee__tag">Next.js</span>
+          <span class="marquee__tag">Node.js</span>
+          <span class="marquee__tag">Express</span>
+          <span class="marquee__tag">PostgreSQL</span>
+          <span class="marquee__tag">MongoDB</span>
+          <span class="marquee__tag">GraphQL</span>
+          <span class="marquee__tag">REST APIs</span>
+          <span class="marquee__tag">Git</span>
+          <span class="marquee__tag">Docker</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="marquee marquee--reverse">
+      <div class="marquee__track">
+        <div class="marquee__content" aria-hidden="false">
+          <span class="marquee__tag">Redux</span>
+          <span class="marquee__tag">CSS Grid</span>
+          <span class="marquee__tag">Flexbox</span>
+          <span class="marquee__tag">Sass</span>
+          <span class="marquee__tag">Tailwind</span>
+          <span class="marquee__tag">Firebase</span>
+          <span class="marquee__tag">AWS</span>
+          <span class="marquee__tag">CI/CD</span>
+          <span class="marquee__tag">Photography</span>
+          <span class="marquee__tag">Lightroom</span>
+          <span class="marquee__tag">Figma</span>
+          <span class="marquee__tag">Linux</span>
+        </div>
+        <div class="marquee__content" aria-hidden="true">
+          <span class="marquee__tag">Redux</span>
+          <span class="marquee__tag">CSS Grid</span>
+          <span class="marquee__tag">Flexbox</span>
+          <span class="marquee__tag">Sass</span>
+          <span class="marquee__tag">Tailwind</span>
+          <span class="marquee__tag">Firebase</span>
+          <span class="marquee__tag">AWS</span>
+          <span class="marquee__tag">CI/CD</span>
+          <span class="marquee__tag">Photography</span>
+          <span class="marquee__tag">Lightroom</span>
+          <span class="marquee__tag">Figma</span>
+          <span class="marquee__tag">Linux</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       CONTACT
+  ═══════════════════════════════════════════ -->
+  <section class="contact" id="contact">
+    <div class="container">
+      <h2 class="section-title reveal">Get in Touch</h2>
+
+      <div class="contact__grid">
+        <form class="contact__form reveal" id="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+          <div class="form-group">
+            <input type="text" id="name" name="name" required autocomplete="name" placeholder=" ">
+            <label for="name">Your Name</label>
+          </div>
+          <div class="form-group">
+            <input type="email" id="email" name="email" required autocomplete="email" placeholder=" ">
+            <label for="email">Your Email</label>
+          </div>
+          <div class="form-group">
+            <textarea id="message" name="message" rows="5" required placeholder=" "></textarea>
+            <label for="message">Your Message</label>
+          </div>
+          <button type="submit" class="btn btn--primary" id="submit-btn">
+            <span>Send Message</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+          </button>
+          <p class="form-status" id="form-status"></p>
+        </form>
+
+        <div class="contact__info reveal reveal--delay-1">
+          <div class="contact__info-block">
+            <h3>Let's talk</h3>
+            <p>
+              I'm open to freelance projects, collaboration, or just a friendly chat
+              about code and cameras.
+            </p>
+          </div>
+
+          <div class="contact__info-block">
+            <h3>Email</h3>
+            <a href="mailto:anani.tobi@gmail.com">anani.tobi@gmail.com</a>
+          </div>
+
+          <div class="contact__info-block">
+            <h3>Socials</h3>
+            <div class="contact__socials">
+              <a href="https://github.com/oluwatobiloba2000" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+              </a>
+              <a href="https://twitter.com/Anani_oluwatobi" target="_blank" rel="noopener noreferrer" aria-label="Twitter / X">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+              </a>
+              <a href="https://www.linkedin.com/in/anani-oluwatobi/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+              </a>
+            </div>
+          </div>
+
+          <div class="contact__info-block">
+            <a href="https://standardresume.co/r/QdquTFB9p7_ZnbSRKBfSe" target="_blank" rel="noopener noreferrer" class="btn btn--outline">
+              View Resume
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       FOOTER
+  ═══════════════════════════════════════════ -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <p class="footer__copy">Built by Tobby &mdash; 2026</p>
+
+      <ul class="footer__links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+
+      <div class="footer__socials">
+        <a href="https://github.com/oluwatobiloba2000" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+        </a>
+        <a href="https://twitter.com/Anani_oluwatobi" target="_blank" rel="noopener noreferrer" aria-label="Twitter / X">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        </a>
+        <a href="https://www.linkedin.com/in/anani-oluwatobi/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer">
+    <button class="lightbox__close" id="lightbox-close" aria-label="Close lightbox">&times;</button>
+    <button class="lightbox__prev" id="lightbox-prev" aria-label="Previous photo">&#8249;</button>
+    <button class="lightbox__next" id="lightbox-next" aria-label="Next photo">&#8250;</button>
+    <div class="lightbox__img-wrapper">
+      <img class="lightbox__img" id="lightbox-img" src="" alt="">
+    </div>
+    <p class="lightbox__caption" id="lightbox-caption"></p>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/main.js"></script>
+  <script src="js/lightbox.js"></script>
+  <script src="js/form.js"></script>
 </body>
 </html>

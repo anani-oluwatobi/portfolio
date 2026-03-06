@@ -1,0 +1,140 @@
+/* ═══════════════════════════════════════════════
+   SCROLL REVEAL SYSTEM
+   ═══════════════════════════════════════════════ */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+              transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.reveal--delay-1 {
+  transition-delay: 0.15s;
+}
+
+.reveal--delay-2 {
+  transition-delay: 0.3s;
+}
+
+.reveal--delay-3 {
+  transition-delay: 0.45s;
+}
+
+.reveal--visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ═══════════════════════════════════════════════
+   HERO LOAD ANIMATION
+   ═══════════════════════════════════════════════ */
+.hero .reveal {
+  /* Override: hero elements use their own load-in timing */
+  transition-duration: 0.8s;
+}
+
+.hero .reveal--delay-1 {
+  transition-delay: 0.3s;
+}
+
+.hero .reveal--delay-2 {
+  transition-delay: 0.6s;
+}
+
+/* ═══════════════════════════════════════════════
+   HOVER & INTERACTION ANIMATIONS
+   ═══════════════════════════════════════════════ */
+
+/* Nav link underline slide */
+@keyframes underline-slide {
+  from { width: 0; }
+  to   { width: 100%; }
+}
+
+/* Project card lift */
+.project-card {
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+              box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Gallery image scale */
+.gallery__item img {
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Gallery overlay fade */
+.gallery__overlay {
+  transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Button press feedback */
+.btn:active {
+  transform: translateY(0) scale(0.98);
+}
+
+/* ═══════════════════════════════════════════════
+   PULSE GLOW — used on hero name
+   ═══════════════════════════════════════════════ */
+@keyframes pulse-glow {
+  0%, 100% {
+    text-shadow: 0 0 60px rgba(108, 60, 224, 0.2);
+  }
+  50% {
+    text-shadow: 0 0 100px rgba(108, 60, 224, 0.35);
+  }
+}
+
+.hero__name {
+  animation: pulse-glow 4s ease-in-out infinite;
+}
+
+/* ═══════════════════════════════════════════════
+   LOADING SPINNER (for form submit)
+   ═══════════════════════════════════════════════ */
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.btn--loading {
+  position: relative;
+  color: transparent !important;
+  pointer-events: none;
+}
+
+.btn--loading::after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--clr-text);
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+}
+
+/* ═══════════════════════════════════════════════
+   PREFERS REDUCED MOTION
+   ═══════════════════════════════════════════════ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+
+  .marquee__track {
+    animation: none;
+  }
+
+  .hero__name {
+    animation: none;
+  }
+}
