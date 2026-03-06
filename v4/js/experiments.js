@@ -1,9 +1,59 @@
 /* ═══════════════════════════════════════════════
-   EXPERIMENTS.JS — Film Grain Simulator & Color Grading Tool
+   EXPERIMENTS.JS — Comparison, Grain, Color Grading, Form
    ═══════════════════════════════════════════════ */
 
 (function () {
   'use strict';
+
+  // ─── Before/After Comparison Slider ──────────
+  var comparison = document.getElementById('comparison');
+  var compAfter = document.getElementById('comparison-after');
+  var compSlider = document.getElementById('comparison-slider');
+
+  if (comparison && compAfter && compSlider) {
+    var isDragging = false;
+
+    function updateComparison(clientX) {
+      var rect = comparison.getBoundingClientRect();
+      var x = clientX - rect.left;
+      var pct = Math.max(0, Math.min(100, (x / rect.width) * 100));
+
+      compAfter.style.clipPath = 'inset(0 ' + (100 - pct) + '% 0 0)';
+      compSlider.style.left = pct + '%';
+    }
+
+    comparison.addEventListener('mousedown', function (e) {
+      isDragging = true;
+      updateComparison(e.clientX);
+    });
+
+    document.addEventListener('mousemove', function (e) {
+      if (isDragging) {
+        e.preventDefault();
+        updateComparison(e.clientX);
+      }
+    });
+
+    document.addEventListener('mouseup', function () {
+      isDragging = false;
+    });
+
+    // Touch support
+    comparison.addEventListener('touchstart', function (e) {
+      isDragging = true;
+      updateComparison(e.touches[0].clientX);
+    }, { passive: true });
+
+    document.addEventListener('touchmove', function (e) {
+      if (isDragging) {
+        updateComparison(e.touches[0].clientX);
+      }
+    }, { passive: true });
+
+    document.addEventListener('touchend', function () {
+      isDragging = false;
+    });
+  }
 
   // ─── Film Grain Simulator ────────────────────
   var grainSize = document.getElementById('grain-size');
@@ -29,7 +79,6 @@
       var size = parseInt(grainSize.value);
       var intensity = parseInt(grainIntensity.value);
       var temp = parseInt(grainTemp.value);
-
       var w = grainCanvas.width;
       var h = grainCanvas.height;
 
@@ -40,13 +89,9 @@
 
       var imageData = ctx.createImageData(w, h);
       var data = imageData.data;
-
-      // Grain size affects step (larger = chunkier grain)
-      var step = Math.max(1, Math.floor(size / 20));
-
-      // Temperature: 0 = cool blue, 50 = neutral, 100 = warm orange
-      var tempR = temp > 50 ? (temp - 50) / 50 * 30 : 0;
-      var tempB = temp < 50 ? (50 - temp) / 50 * 30 : 0;
+      var step = Math.max(1, Math.floor(size / 15));
+      var tempR = temp > 50 ? (temp - 50) / 50 * 35 : 0;
+      var tempB = temp < 50 ? (50 - temp) / 50 * 35 : 0;
 
       for (var y = 0; y < h; y += step) {
         for (var x = 0; x < w; x += step) {
@@ -58,7 +103,7 @@
               data[i]     = Math.max(0, Math.min(255, 128 + noise + tempR));
               data[i + 1] = Math.max(0, Math.min(255, 128 + noise));
               data[i + 2] = Math.max(0, Math.min(255, 128 + noise + tempB));
-              data[i + 3] = Math.floor(intensity * 1.2);
+              data[i + 3] = Math.floor(intensity * 1.5);
             }
           }
         }
@@ -78,7 +123,6 @@
       slider.addEventListener('input', updateGrainValues);
     });
 
-    // Start grain rendering when in view
     var grainObserver = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
         if (entry.isIntersecting) {
@@ -94,10 +138,7 @@
     }, { threshold: 0.1 });
 
     grainObserver.observe(grainPreview);
-
-    window.addEventListener('resize', function () {
-      resizeGrainCanvas();
-    });
+    window.addEventListener('resize', resizeGrainCanvas);
   }
 
   // ─── Color Grading Tool ──────────────────────
@@ -110,6 +151,7 @@
   var gradeSaturateVal = document.getElementById('grade-saturate-val');
   var gradeHueVal = document.getElementById('grade-hue-val');
   var gradeImg = document.getElementById('grade-img');
+  var gradeReset = document.getElementById('grade-reset');
 
   if (gradeImg) {
     function updateColorGrade() {
@@ -121,7 +163,7 @@
       gradeBrightnessVal.textContent = b;
       gradeContrastVal.textContent = c;
       gradeSaturateVal.textContent = s;
-      gradeHueVal.textContent = h;
+      gradeHueVal.textContent = h + '\u00B0';
 
       gradeImg.style.filter =
         'brightness(' + (b / 100) + ') ' +
@@ -133,6 +175,16 @@
     [gradeBrightness, gradeContrast, gradeSaturate, gradeHue].forEach(function (slider) {
       slider.addEventListener('input', updateColorGrade);
     });
+
+    if (gradeReset) {
+      gradeReset.addEventListener('click', function () {
+        gradeBrightness.value = 100;
+        gradeContrast.value = 100;
+        gradeSaturate.value = 100;
+        gradeHue.value = 0;
+        updateColorGrade();
+      });
+    }
   }
 
   // ─── Contact Form ────────────────────────────

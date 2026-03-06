@@ -31,23 +31,51 @@
 </head>
 <body>
 
-  <!-- ═══════════════════════════════════════════
-       FILM GRAIN OVERLAY (always on)
-  ═══════════════════════════════════════════ -->
+  <!-- Custom Cursor -->
+  <div class="cursor" id="cursor">
+    <div class="cursor__dot"></div>
+    <div class="cursor__ring"></div>
+  </div>
+
+  <!-- Film Grain Overlay -->
   <div class="film-grain" aria-hidden="true"></div>
+
+  <!-- Scroll Progress (Film Strip) -->
+  <div class="scroll-progress" id="scroll-progress">
+    <div class="scroll-progress__fill" id="scroll-fill"></div>
+    <div class="scroll-progress__perfs">
+      <span></span><span></span><span></span><span></span><span></span>
+      <span></span><span></span><span></span><span></span><span></span>
+      <span></span><span></span><span></span><span></span><span></span>
+      <span></span><span></span><span></span><span></span><span></span>
+    </div>
+  </div>
 
   <!-- ═══════════════════════════════════════════
        CINEMATIC ENTRY / VIEWFINDER
   ═══════════════════════════════════════════ -->
   <section class="viewfinder" id="viewfinder">
+    <!-- Scanlines -->
+    <div class="viewfinder__scanlines" aria-hidden="true"></div>
+    <!-- Vignette -->
+    <div class="viewfinder__vignette" aria-hidden="true"></div>
+
     <div class="viewfinder__hud">
       <div class="viewfinder__top-left">
         <span class="viewfinder__rec">REC <span class="viewfinder__rec-dot"></span></span>
         <span class="viewfinder__meta">ISO 200</span>
+        <span class="viewfinder__meta">f/1.8</span>
       </div>
       <div class="viewfinder__top-right">
         <span class="viewfinder__meta">35mm</span>
         <span class="viewfinder__meta">1/48</span>
+        <span class="viewfinder__meta viewfinder__meta--wb">AWB</span>
+      </div>
+      <div class="viewfinder__bottom-left">
+        <div class="viewfinder__level">
+          <span class="viewfinder__level-bar"></span>
+        </div>
+        <span class="viewfinder__meta">S-Log3</span>
       </div>
       <div class="viewfinder__crosshair"></div>
       <div class="viewfinder__brackets">
@@ -56,30 +84,50 @@
         <span class="viewfinder__bracket viewfinder__bracket--bl"></span>
         <span class="viewfinder__bracket viewfinder__bracket--br"></span>
       </div>
+      <!-- Exposure meter -->
+      <div class="viewfinder__exposure">
+        <div class="viewfinder__exposure-bar">
+          <span class="viewfinder__exposure-marker"></span>
+        </div>
+        <div class="viewfinder__exposure-labels">
+          <span>-2</span><span>-1</span><span>0</span><span>+1</span><span>+2</span>
+        </div>
+      </div>
     </div>
 
     <div class="viewfinder__bg">
       <img src="https://images.unsplash.com/photo-1533929736458-ca588d08c8be?w=1920&q=80" alt="" class="viewfinder__bg-img">
     </div>
 
+    <!-- Letterbox bars -->
+    <div class="viewfinder__letterbox viewfinder__letterbox--top"></div>
+    <div class="viewfinder__letterbox viewfinder__letterbox--bottom"></div>
+
     <div class="viewfinder__content">
-      <h1 class="viewfinder__name">Toby</h1>
-      <p class="viewfinder__role">Software Engineer & Cinematographer</p>
-      <button class="viewfinder__enter" id="enter-btn">
+      <h1 class="viewfinder__name" id="viewfinder-name"></h1>
+      <p class="viewfinder__role" id="viewfinder-role"></p>
+      <button class="viewfinder__enter magnetic" id="enter-btn">
         <span class="viewfinder__enter-icon"></span>
-        PRESS RECORD
+        <span class="viewfinder__enter-text">PRESS RECORD</span>
       </button>
     </div>
 
-    <div class="viewfinder__timecode">00:00:00:00</div>
+    <div class="viewfinder__timecode" id="viewfinder-timecode">00:00:00:00</div>
+    <div class="viewfinder__battery">
+      <svg width="20" height="12" viewBox="0 0 20 12" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1">
+        <rect x="0.5" y="0.5" width="17" height="11" rx="1"/>
+        <rect x="18" y="3" width="2" height="6" rx="0.5" fill="rgba(255,255,255,0.3)"/>
+        <rect x="2" y="2.5" width="12" height="7" rx="0.5" fill="rgba(77,255,77,0.4)"/>
+      </svg>
+    </div>
   </section>
 
   <!-- ═══════════════════════════════════════════
-       MAIN SITE (hidden until entry)
+       MAIN SITE
   ═══════════════════════════════════════════ -->
   <main class="site" id="site">
 
-    <!-- ─── NAVIGATION ─── -->
+    <!-- Navigation -->
     <nav class="nav" id="nav">
       <a href="#" class="nav__brand">TOBY<span class="nav__brand-dot">.</span></a>
       <ul class="nav__links" id="nav-links">
@@ -108,7 +156,10 @@
     <!-- ═══════════════════════════════════════════
          LOCATION 1 — THE CODE STUDIO
     ═══════════════════════════════════════════ -->
-    <section class="location" id="location-code">
+    <section class="location location--code" id="location-code" data-cursor="code">
+      <!-- Light leak transition -->
+      <div class="light-leak" aria-hidden="true"></div>
+
       <div class="location__header">
         <span class="location__number">LOCATION 01</span>
         <h2 class="location__title">THE CODE STUDIO</h2>
@@ -116,6 +167,7 @@
       </div>
 
       <div class="location__content container">
+        <!-- About + Interactive Terminal Side by Side -->
         <div class="code-studio__about">
           <div class="code-studio__text">
             <p>
@@ -130,20 +182,89 @@
               and a desire to create something meaningful.
             </p>
           </div>
-          <div class="code-studio__skills">
-            <div class="skill-float" data-speed="0.8">React</div>
-            <div class="skill-float" data-speed="1.2">Node.js</div>
-            <div class="skill-float" data-speed="0.6">TypeScript</div>
-            <div class="skill-float" data-speed="1.0">PostgreSQL</div>
-            <div class="skill-float" data-speed="0.9">GraphQL</div>
-            <div class="skill-float" data-speed="1.1">Next.js</div>
-            <div class="skill-float" data-speed="0.7">Three.js</div>
-            <div class="skill-float" data-speed="1.3">Systems</div>
+
+          <!-- Interactive Terminal -->
+          <div class="terminal" id="terminal">
+            <div class="terminal__header">
+              <div class="terminal__dots">
+                <span class="terminal__dot terminal__dot--red"></span>
+                <span class="terminal__dot terminal__dot--yellow"></span>
+                <span class="terminal__dot terminal__dot--green"></span>
+              </div>
+              <span class="terminal__title">toby@studio ~ </span>
+            </div>
+            <div class="terminal__body" id="terminal-body">
+              <div class="terminal__line"><span class="terminal__prompt">$</span> <span class="terminal__cmd">whoami</span></div>
+              <div class="terminal__output">Toby — Software Engineer & Cinematographer</div>
+              <div class="terminal__line"><span class="terminal__prompt">$</span> <span class="terminal__cmd">cat skills.json</span></div>
+              <div class="terminal__output terminal__output--json">{
+  "frontend": ["React", "Next.js", "TypeScript", "Three.js"],
+  "backend": ["Node.js", "Express", "PostgreSQL", "GraphQL"],
+  "tools": ["Git", "Docker", "AWS", "Figma"],
+  "cinema": ["Sony A7III", "DaVinci Resolve", "Premiere Pro"]
+}</div>
+              <div class="terminal__line"><span class="terminal__prompt">$</span> <span class="terminal__cmd">uptime</span></div>
+              <div class="terminal__output">coding since 2020 &mdash; 6 years and counting</div>
+              <div class="terminal__line terminal__line--active"><span class="terminal__prompt">$</span> <span class="terminal__cursor">_</span></div>
+            </div>
+            <input type="text" class="terminal__input" id="terminal-input" autocomplete="off" spellcheck="false" aria-label="Terminal input">
+          </div>
+        </div>
+
+        <!-- Code Stats Counter -->
+        <div class="code-stats">
+          <div class="code-stat" data-target="15000" data-suffix="+">
+            <span class="code-stat__number" data-count="0">0</span>
+            <span class="code-stat__label">Lines of Code</span>
+          </div>
+          <div class="code-stat" data-target="500" data-suffix="+">
+            <span class="code-stat__number" data-count="0">0</span>
+            <span class="code-stat__label">Git Commits</span>
+          </div>
+          <div class="code-stat" data-target="5">
+            <span class="code-stat__number" data-count="0">0</span>
+            <span class="code-stat__label">Projects Shipped</span>
+          </div>
+          <div class="code-stat" data-target="2847" data-suffix="+">
+            <span class="code-stat__number" data-count="0">0</span>
+            <span class="code-stat__label">Cups of Coffee</span>
+          </div>
+        </div>
+
+        <!-- Skills floating constellation -->
+        <div class="skills-constellation" id="skills-constellation">
+          <div class="skill-node" data-speed="0.8" style="--x: 10%; --y: 20%">React</div>
+          <div class="skill-node" data-speed="1.2" style="--x: 30%; --y: 60%">Node.js</div>
+          <div class="skill-node skill-node--lg" data-speed="0.6" style="--x: 55%; --y: 15%">TypeScript</div>
+          <div class="skill-node" data-speed="1.0" style="--x: 75%; --y: 45%">PostgreSQL</div>
+          <div class="skill-node skill-node--sm" data-speed="0.9" style="--x: 20%; --y: 80%">GraphQL</div>
+          <div class="skill-node skill-node--lg" data-speed="1.1" style="--x: 85%; --y: 75%">Next.js</div>
+          <div class="skill-node skill-node--sm" data-speed="0.7" style="--x: 45%; --y: 85%">Three.js</div>
+          <div class="skill-node" data-speed="1.3" style="--x: 65%; --y: 30%">Docker</div>
+          <div class="skill-node skill-node--sm" data-speed="0.5" style="--x: 5%; --y: 50%">Git</div>
+          <div class="skill-node" data-speed="1.0" style="--x: 90%; --y: 15%">AWS</div>
+          <div class="skill-node skill-node--sm" data-speed="0.8" style="--x: 40%; --y: 40%">Express</div>
+          <div class="skill-node" data-speed="1.1" style="--x: 50%; --y: 55%">MongoDB</div>
+          <canvas id="constellation-canvas" class="skills-constellation__canvas"></canvas>
+        </div>
+
+        <!-- Credits Marquee -->
+        <div class="credits-marquee">
+          <div class="credits-marquee__track">
+            <span>REACT</span><span>/</span><span>NODE.JS</span><span>/</span>
+            <span>TYPESCRIPT</span><span>/</span><span>POSTGRESQL</span><span>/</span>
+            <span>GRAPHQL</span><span>/</span><span>NEXT.JS</span><span>/</span>
+            <span>THREE.JS</span><span>/</span><span>DOCKER</span><span>/</span>
+            <span>AWS</span><span>/</span><span>FIGMA</span><span>/</span>
+            <span>REACT</span><span>/</span><span>NODE.JS</span><span>/</span>
+            <span>TYPESCRIPT</span><span>/</span><span>POSTGRESQL</span><span>/</span>
+            <span>GRAPHQL</span><span>/</span><span>NEXT.JS</span><span>/</span>
+            <span>THREE.JS</span><span>/</span><span>DOCKER</span><span>/</span>
+            <span>AWS</span><span>/</span><span>FIGMA</span><span>/</span>
           </div>
         </div>
 
         <div class="projects-grid">
-          <!-- Swift Finance -->
           <article class="project-module" data-project="swift">
             <div class="project-module__visual">
               <img src="../img/illustration/swiftbank.png" alt="Swift Finance" loading="lazy">
@@ -158,15 +279,13 @@
                 <span class="project-module__tag">React</span>
               </div>
               <div class="project-module__links">
-                <a href="http://getswiftbank.com" target="_blank" rel="noopener noreferrer" class="project-module__link">
-                  Live
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+                <a href="http://getswiftbank.com" target="_blank" rel="noopener noreferrer" class="project-module__link magnetic">
+                  Live <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
                 </a>
               </div>
             </div>
           </article>
 
-          <!-- Todoly -->
           <article class="project-module" data-project="todoly">
             <div class="project-module__visual">
               <img src="../img/illustration/todoly.png" alt="Todoly" loading="lazy">
@@ -183,15 +302,13 @@
               </div>
               <div class="project-module__links">
                 <a href="https://github.com/oluwatobiloba2000/Todoly" target="_blank" rel="noopener noreferrer" class="project-module__link">Code</a>
-                <a href="https://todoly-app.netlify.app/" target="_blank" rel="noopener noreferrer" class="project-module__link">
-                  Live
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+                <a href="https://todoly-app.netlify.app/" target="_blank" rel="noopener noreferrer" class="project-module__link magnetic">
+                  Live <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
                 </a>
               </div>
             </div>
           </article>
 
-          <!-- Team Work -->
           <article class="project-module" data-project="teamwork">
             <div class="project-module__visual">
               <img src="../img/illustration/Team work app.png" alt="Team Work" loading="lazy">
@@ -210,15 +327,13 @@
               </div>
               <div class="project-module__links">
                 <a href="https://github.com/oluwatobiloba2000/team-work" target="_blank" rel="noopener noreferrer" class="project-module__link">Code</a>
-                <a href="https://teamily.netlify.app/" target="_blank" rel="noopener noreferrer" class="project-module__link">
-                  Live
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+                <a href="https://teamily.netlify.app/" target="_blank" rel="noopener noreferrer" class="project-module__link magnetic">
+                  Live <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
                 </a>
               </div>
             </div>
           </article>
 
-          <!-- Geo Search -->
           <article class="project-module" data-project="geo">
             <div class="project-module__visual">
               <img src="../img/illustration/geo search.png" alt="Geo Search" loading="lazy">
@@ -231,8 +346,8 @@
               <p class="project-module__desc">Search for places and get timezone, weather, temperature, wind speed, humidity, and precipitation data.</p>
               <div class="project-module__meta">
                 <span class="project-module__tag">HTML</span>
-                <span class="project-module__tag">Google Maps API</span>
-                <span class="project-module__tag">OpenWeather API</span>
+                <span class="project-module__tag">Google Maps</span>
+                <span class="project-module__tag">OpenWeather</span>
               </div>
               <div class="project-module__links">
                 <a href="https://github.com/oluwatobiloba2000" target="_blank" rel="noopener noreferrer" class="project-module__link">Code</a>
@@ -240,7 +355,6 @@
             </div>
           </article>
 
-          <!-- Trimer -->
           <article class="project-module" data-project="trimer">
             <div class="project-module__info project-module__info--solo">
               <h3 class="project-module__title">Trimer</h3>
@@ -262,7 +376,9 @@
     <!-- ═══════════════════════════════════════════
          LOCATION 2 — THE CINEMATIC WORLD
     ═══════════════════════════════════════════ -->
-    <section class="location location--cinema" id="location-cinema">
+    <section class="location location--cinema" id="location-cinema" data-cursor="cinema">
+      <div class="light-leak" aria-hidden="true"></div>
+
       <div class="location__header">
         <span class="location__number">LOCATION 02</span>
         <h2 class="location__title">THE CINEMATIC WORLD</h2>
@@ -270,62 +386,102 @@
       </div>
 
       <div class="location__content container">
-        <!-- Film Projects as Posters -->
         <div class="films-grid">
           <article class="film-poster">
             <div class="film-poster__visual">
               <img src="https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?w=800&q=80" alt="Haarlem Vibrant City" loading="lazy">
+              <div class="film-poster__grain"></div>
               <div class="film-poster__overlay">
                 <span class="film-poster__year">2025</span>
                 <h3 class="film-poster__title">HAARLEM VIBRANT CITY</h3>
                 <p class="film-poster__tagline">Exploring rhythm in a living city</p>
+                <div class="film-poster__specs">
+                  <span>24fps</span><span>S-Log3</span><span>Sony A7III</span>
+                </div>
               </div>
+              <div class="film-poster__border"></div>
             </div>
           </article>
 
           <article class="film-poster">
             <div class="film-poster__visual">
               <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?w=800&q=80" alt="Silent Peaks" loading="lazy">
+              <div class="film-poster__grain"></div>
               <div class="film-poster__overlay">
                 <span class="film-poster__year">2025</span>
                 <h3 class="film-poster__title">SILENT PEAKS</h3>
                 <p class="film-poster__tagline">Finding stillness in motion</p>
+                <div class="film-poster__specs">
+                  <span>24fps</span><span>4K</span><span>35mm</span>
+                </div>
               </div>
+              <div class="film-poster__border"></div>
             </div>
           </article>
 
           <article class="film-poster">
             <div class="film-poster__visual">
               <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800&q=80" alt="Still Waters" loading="lazy">
+              <div class="film-poster__grain"></div>
               <div class="film-poster__overlay">
                 <span class="film-poster__year">2024</span>
                 <h3 class="film-poster__title">STILL WATERS</h3>
                 <p class="film-poster__tagline">Reflections of a quiet world</p>
+                <div class="film-poster__specs">
+                  <span>24fps</span><span>Mist 1/4</span><span>f/1.8</span>
+                </div>
               </div>
+              <div class="film-poster__border"></div>
             </div>
           </article>
         </div>
 
-        <!-- Shot Categories -->
+        <!-- Shot Categories with richer visuals -->
         <div class="shots-section">
           <h3 class="shots-section__title">THE SHOTS</h3>
           <div class="shots-grid">
             <div class="shot-category" data-category="movement">
               <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=600&q=80" alt="Movement" loading="lazy">
-              <span class="shot-category__label">MOVEMENT</span>
+              <div class="shot-category__overlay">
+                <span class="shot-category__label">MOVEMENT</span>
+                <span class="shot-category__count">Tracking / Dolly / Handheld</span>
+              </div>
             </div>
             <div class="shot-category" data-category="light">
               <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=600&q=80" alt="Light" loading="lazy">
-              <span class="shot-category__label">LIGHT</span>
+              <div class="shot-category__overlay">
+                <span class="shot-category__label">LIGHT</span>
+                <span class="shot-category__count">Golden Hour / Neon / Natural</span>
+              </div>
             </div>
             <div class="shot-category" data-category="textures">
               <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80" alt="Textures" loading="lazy">
-              <span class="shot-category__label">TEXTURES</span>
+              <div class="shot-category__overlay">
+                <span class="shot-category__label">TEXTURES</span>
+                <span class="shot-category__count">Rain / Glass / Metal</span>
+              </div>
             </div>
             <div class="shot-category" data-category="night">
               <img src="https://images.unsplash.com/photo-1533929736458-ca588d08c8be?w=600&q=80" alt="Night" loading="lazy">
-              <span class="shot-category__label">NIGHT</span>
+              <div class="shot-category__overlay">
+                <span class="shot-category__label">NIGHT</span>
+                <span class="shot-category__count">Street / Neon / Low Light</span>
+              </div>
             </div>
+          </div>
+        </div>
+
+        <!-- Cinema Credits Marquee -->
+        <div class="credits-marquee credits-marquee--cinema">
+          <div class="credits-marquee__track credits-marquee__track--reverse">
+            <span>SONY A7III</span><span>/</span><span>SAMYANG 35MM</span><span>/</span>
+            <span>MIST 1/4</span><span>/</span><span>BLACKMAGIC</span><span>/</span>
+            <span>DAVINCI RESOLVE</span><span>/</span><span>S-LOG3</span><span>/</span>
+            <span>4K</span><span>/</span><span>24FPS</span><span>/</span>
+            <span>SONY A7III</span><span>/</span><span>SAMYANG 35MM</span><span>/</span>
+            <span>MIST 1/4</span><span>/</span><span>BLACKMAGIC</span><span>/</span>
+            <span>DAVINCI RESOLVE</span><span>/</span><span>S-LOG3</span><span>/</span>
+            <span>4K</span><span>/</span><span>24FPS</span><span>/</span>
           </div>
         </div>
 
@@ -334,34 +490,34 @@
           <h3 class="gear-section__title">THE GEAR</h3>
           <div class="gear-grid">
             <div class="gear-item">
-              <span class="gear-item__icon">&#9711;</span>
+              <div class="gear-item__glow"></div>
               <span class="gear-item__name">Sony A7III</span>
-              <span class="gear-item__type">Camera</span>
+              <span class="gear-item__type">Camera Body</span>
             </div>
             <div class="gear-item">
-              <span class="gear-item__icon">&#9711;</span>
+              <div class="gear-item__glow"></div>
               <span class="gear-item__name">Samyang 35mm f1.8</span>
-              <span class="gear-item__type">Lens</span>
+              <span class="gear-item__type">Prime Lens</span>
             </div>
             <div class="gear-item">
-              <span class="gear-item__icon">&#9711;</span>
+              <div class="gear-item__glow"></div>
               <span class="gear-item__name">Mist 1/4 Filter</span>
-              <span class="gear-item__type">Filter</span>
+              <span class="gear-item__type">Diffusion</span>
             </div>
             <div class="gear-item">
-              <span class="gear-item__icon">&#9711;</span>
+              <div class="gear-item__glow"></div>
               <span class="gear-item__name">iPhone 15 Pro</span>
-              <span class="gear-item__type">Secondary</span>
+              <span class="gear-item__type">B-Camera</span>
             </div>
             <div class="gear-item">
-              <span class="gear-item__icon">&#9711;</span>
+              <div class="gear-item__glow"></div>
               <span class="gear-item__name">Blackmagic Camera</span>
-              <span class="gear-item__type">App</span>
+              <span class="gear-item__type">Recording App</span>
             </div>
             <div class="gear-item">
-              <span class="gear-item__icon">&#9711;</span>
-              <span class="gear-item__name">DJI Gimbal</span>
-              <span class="gear-item__type">Stabilizer</span>
+              <div class="gear-item__glow"></div>
+              <span class="gear-item__name">DJI RS 3 Mini</span>
+              <span class="gear-item__type">Gimbal Stabilizer</span>
             </div>
           </div>
         </div>
@@ -371,7 +527,9 @@
     <!-- ═══════════════════════════════════════════
          LOCATION 3 — THE EXPERIMENT LAB
     ═══════════════════════════════════════════ -->
-    <section class="location location--lab" id="location-lab">
+    <section class="location location--lab" id="location-lab" data-cursor="lab">
+      <div class="light-leak" aria-hidden="true"></div>
+
       <div class="location__header">
         <span class="location__number">LOCATION 03</span>
         <h2 class="location__title">THE EXPERIMENT LAB</h2>
@@ -379,6 +537,29 @@
       </div>
 
       <div class="location__content container">
+        <!-- Before/After Comparison -->
+        <div class="experiment" id="before-after">
+          <h3 class="experiment__title">Before / After Color Grade</h3>
+          <p class="experiment__desc">Drag the slider to see the difference color grading makes</p>
+          <div class="comparison" id="comparison">
+            <div class="comparison__before">
+              <img src="https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?w=1000&q=80" alt="Before grading" loading="lazy">
+              <span class="comparison__label">RAW</span>
+            </div>
+            <div class="comparison__after" id="comparison-after">
+              <img src="https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?w=1000&q=80" alt="After grading" loading="lazy">
+              <span class="comparison__label">GRADED</span>
+            </div>
+            <div class="comparison__slider" id="comparison-slider">
+              <div class="comparison__handle">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="8 4 4 8 8 12"/><polyline points="16 4 20 8 16 12"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <!-- Film Grain Simulator -->
         <div class="experiment" id="grain-simulator">
           <h3 class="experiment__title">Film Grain Simulator</h3>
@@ -409,7 +590,7 @@
         <!-- Color Grading Tool -->
         <div class="experiment" id="color-grading">
           <h3 class="experiment__title">Color Grading Tool</h3>
-          <p class="experiment__desc">Try grading this shot — adjust lift, gamma, and gain</p>
+          <p class="experiment__desc">Try grading this shot &mdash; adjust brightness, contrast, saturation, and hue</p>
           <div class="experiment__controls">
             <div class="experiment__slider">
               <label>Brightness</label>
@@ -435,6 +616,7 @@
           <div class="experiment__preview" id="grade-preview">
             <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?w=800&q=80" alt="Color grade preview" id="grade-img" loading="lazy">
           </div>
+          <button class="experiment__reset magnetic" id="grade-reset">RESET GRADE</button>
         </div>
       </div>
     </section>
@@ -442,7 +624,9 @@
     <!-- ═══════════════════════════════════════════
          LOCATION 4 — THE JOURNEY
     ═══════════════════════════════════════════ -->
-    <section class="location location--journey" id="location-journey">
+    <section class="location location--journey" id="location-journey" data-cursor="default">
+      <div class="light-leak" aria-hidden="true"></div>
+
       <div class="location__header">
         <span class="location__number">LOCATION 04</span>
         <h2 class="location__title">THE JOURNEY</h2>
@@ -451,45 +635,52 @@
 
       <div class="location__content container">
         <div class="timeline">
-          <div class="timeline__line"></div>
+          <div class="timeline__line">
+            <div class="timeline__line-fill" id="timeline-fill"></div>
+          </div>
 
           <div class="timeline__entry" data-year="2020">
             <div class="timeline__year">2020</div>
             <div class="timeline__card">
+              <div class="timeline__card-glow"></div>
               <h3>Started Software Engineering</h3>
-              <p>Began building web applications, learning React, Node.js, and modern web technologies.</p>
+              <p>Began building web applications, learning React, Node.js, and modern web technologies. First steps into the world of code.</p>
             </div>
           </div>
 
           <div class="timeline__entry" data-year="2022">
             <div class="timeline__year">2022</div>
             <div class="timeline__card">
+              <div class="timeline__card-glow"></div>
               <h3>Professional Development</h3>
-              <p>Built fintech applications and productivity tools. Deepened expertise in full-stack development.</p>
+              <p>Built fintech applications and productivity tools. Deepened expertise in full-stack development and system architecture.</p>
             </div>
           </div>
 
           <div class="timeline__entry" data-year="2024">
             <div class="timeline__year">2024</div>
             <div class="timeline__card">
+              <div class="timeline__card-glow"></div>
               <h3>Started Cinematography</h3>
-              <p>Picked up the camera. Started learning composition, lighting, and visual storytelling.</p>
+              <p>Picked up the camera. Started learning composition, lighting, and visual storytelling. A new creative dimension unlocked.</p>
             </div>
           </div>
 
           <div class="timeline__entry" data-year="2025">
             <div class="timeline__year">2025</div>
             <div class="timeline__card">
+              <div class="timeline__card-glow"></div>
               <h3>First Cinematic B-roll</h3>
-              <p>Shot first cinematic B-roll series. Haarlem Vibrant City project completed.</p>
+              <p>Shot first cinematic B-roll series. Haarlem Vibrant City project completed. Found the intersection of tech and visual art.</p>
             </div>
           </div>
 
           <div class="timeline__entry" data-year="2026">
             <div class="timeline__year">2026</div>
             <div class="timeline__card">
+              <div class="timeline__card-glow"></div>
               <h3>Merging Both Worlds</h3>
-              <p>Building visual storytelling projects. Where film meets code meets creative engineering.</p>
+              <p>Building visual storytelling projects where film meets code. This portfolio is one of them.</p>
             </div>
           </div>
         </div>
@@ -497,9 +688,11 @@
     </section>
 
     <!-- ═══════════════════════════════════════════
-         LOCATION 5 — THE FINAL SCENE (CONTACT)
+         LOCATION 5 — THE FINAL SCENE
     ═══════════════════════════════════════════ -->
-    <section class="location location--contact" id="location-contact">
+    <section class="location location--contact" id="location-contact" data-cursor="default">
+      <div class="light-leak" aria-hidden="true"></div>
+
       <div class="location__header">
         <span class="location__number">LOCATION 05</span>
         <h2 class="location__title">THE FINAL SCENE</h2>
@@ -519,16 +712,19 @@
               <div class="contact-form__group">
                 <input type="text" id="name" name="name" required autocomplete="name" placeholder=" ">
                 <label for="name">Your Name</label>
+                <span class="contact-form__focus-line"></span>
               </div>
               <div class="contact-form__group">
                 <input type="email" id="email" name="email" required autocomplete="email" placeholder=" ">
                 <label for="email">Your Email</label>
+                <span class="contact-form__focus-line"></span>
               </div>
               <div class="contact-form__group">
                 <textarea id="message" name="message" rows="5" required placeholder=" "></textarea>
                 <label for="message">Your Message</label>
+                <span class="contact-form__focus-line"></span>
               </div>
-              <button type="submit" class="contact-form__btn" id="submit-btn">
+              <button type="submit" class="contact-form__btn magnetic" id="submit-btn">
                 LET'S CREATE SOMETHING
               </button>
               <p class="contact-form__status" id="form-status"></p>
@@ -541,24 +737,24 @@
               </div>
               <div class="final-scene__block">
                 <h3>Email</h3>
-                <a href="mailto:anani.tobi@gmail.com">anani.tobi@gmail.com</a>
+                <a href="mailto:anani.tobi@gmail.com" class="magnetic">anani.tobi@gmail.com</a>
               </div>
               <div class="final-scene__block">
                 <h3>Socials</h3>
                 <div class="final-scene__socials">
-                  <a href="https://github.com/oluwatobiloba2000" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                  <a href="https://github.com/oluwatobiloba2000" target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="magnetic">
                     <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
                   </a>
-                  <a href="https://twitter.com/Anani_oluwatobi" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+                  <a href="https://twitter.com/Anani_oluwatobi" target="_blank" rel="noopener noreferrer" aria-label="Twitter" class="magnetic">
                     <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
                   </a>
-                  <a href="https://www.linkedin.com/in/anani-oluwatobi/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                  <a href="https://www.linkedin.com/in/anani-oluwatobi/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="magnetic">
                     <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
                   </a>
                 </div>
               </div>
               <div class="final-scene__block">
-                <a href="https://standardresume.co/r/QdquTFB9p7_ZnbSRKBfSe" target="_blank" rel="noopener noreferrer" class="final-scene__resume-btn">
+                <a href="https://standardresume.co/r/QdquTFB9p7_ZnbSRKBfSe" target="_blank" rel="noopener noreferrer" class="final-scene__resume-btn magnetic">
                   View Resume
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
                 </a>
@@ -569,28 +765,14 @@
       </div>
     </section>
 
-    <!-- ═══════════════════════════════════════════
-         FOOTER
-    ═══════════════════════════════════════════ -->
+    <!-- Footer -->
     <footer class="footer">
       <div class="container footer__inner">
         <p class="footer__copy">Directed by Toby &mdash; 2026</p>
         <p class="footer__credit">Built with code, captured on film</p>
       </div>
     </footer>
-
   </main>
-
-  <!-- SVG filter for film grain -->
-  <svg class="sr-only" aria-hidden="true">
-    <defs>
-      <filter id="film-grain-filter">
-        <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch" result="noise"/>
-        <feColorMatrix type="saturate" values="0" in="noise" result="mono"/>
-        <feBlend in="SourceGraphic" in2="mono" mode="multiply"/>
-      </filter>
-    </defs>
-  </svg>
 
   <!-- Scripts -->
   <script src="js/main.js"></script>

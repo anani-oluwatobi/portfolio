@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════
-   CINEMA.JS — Viewfinder Entry, Timecode, Transitions
+   CINEMA.JS — Viewfinder, Typing, Timecode, Entry Transition
    ═══════════════════════════════════════════════ */
 
 (function () {
@@ -8,22 +8,45 @@
   var viewfinder = document.getElementById('viewfinder');
   var enterBtn = document.getElementById('enter-btn');
   var site = document.getElementById('site');
-  var timecodeEl = document.querySelector('.viewfinder__timecode');
+  var timecodeEl = document.getElementById('viewfinder-timecode');
+  var nameEl = document.getElementById('viewfinder-name');
+  var roleEl = document.getElementById('viewfinder-role');
+  var scrollProgress = document.getElementById('scroll-progress');
+
+  // ─── Typing Animation for Name ───────────────
+  function typewriteName() {
+    var text = 'Toby';
+    nameEl.innerHTML = '';
+
+    text.split('').forEach(function (char, i) {
+      var span = document.createElement('span');
+      span.className = 'char';
+      span.textContent = char;
+      span.style.animationDelay = (0.5 + i * 0.12) + 's';
+      nameEl.appendChild(span);
+    });
+  }
+
+  typewriteName();
+
+  // Role text fade in is handled by CSS animation
 
   // ─── Timecode Counter ────────────────────────
   var startTime = Date.now();
+  var timecodeRunning = true;
 
   function updateTimecode() {
-    if (!timecodeEl || viewfinder.classList.contains('viewfinder--hidden')) return;
+    if (!timecodeRunning) return;
 
     var elapsed = Date.now() - startTime;
     var h = Math.floor(elapsed / 3600000) % 24;
     var m = Math.floor(elapsed / 60000) % 60;
     var s = Math.floor(elapsed / 1000) % 60;
-    var f = Math.floor((elapsed % 1000) / (1000 / 24)); // 24fps frame count
+    var f = Math.floor((elapsed % 1000) / (1000 / 24));
 
-    timecodeEl.textContent =
-      pad(h) + ':' + pad(m) + ':' + pad(s) + ':' + pad(f);
+    if (timecodeEl) {
+      timecodeEl.textContent = pad(h) + ':' + pad(m) + ':' + pad(s) + ':' + pad(f);
+    }
 
     requestAnimationFrame(updateTimecode);
   }
@@ -34,37 +57,76 @@
 
   requestAnimationFrame(updateTimecode);
 
-  // ─── Enter the Frame (Press Record) ──────────
-  function enterSite() {
-    // Animate viewfinder exit: zoom in + fade out
-    viewfinder.classList.add('viewfinder--exiting');
+  // ─── Viewfinder Mouse Parallax ───────────────
+  if (window.matchMedia('(pointer: fine)').matches) {
+    var bgImg = viewfinder.querySelector('.viewfinder__bg-img');
+    var brackets = viewfinder.querySelector('.viewfinder__brackets');
+    var levelBar = viewfinder.querySelector('.viewfinder__level-bar');
 
-    // After transition, hide viewfinder and reveal site
-    setTimeout(function () {
-      viewfinder.classList.add('viewfinder--hidden');
-      site.classList.add('site--visible');
-      document.body.style.overflow = '';
+    viewfinder.addEventListener('mousemove', function (e) {
+      var x = (e.clientX / window.innerWidth - 0.5) * 2;
+      var y = (e.clientY / window.innerHeight - 0.5) * 2;
 
-      // Initialize main site animations
-      if (typeof window.initMainSite === 'function') {
-        window.initMainSite();
+      // Subtle background shift
+      if (bgImg) {
+        bgImg.style.transform = 'scale(1.1) translate(' + (x * -15) + 'px, ' + (y * -10) + 'px)';
       }
-    }, 1200);
 
-    // Lock scroll during transition
+      // Brackets shift
+      if (brackets) {
+        brackets.style.transform = 'translate(calc(-50% + ' + (x * 5) + 'px), calc(-50% + ' + (y * 5) + 'px))';
+      }
+
+      // Level indicator
+      if (levelBar) {
+        levelBar.style.marginLeft = (25 + x * 10) + '%';
+      }
+    });
+  }
+
+  // ─── Enter the Frame ─────────────────────────
+  function enterSite() {
+    // Screen shake effect
+    viewfinder.style.animation = 'screen-shake 0.15s ease';
+
+    setTimeout(function () {
+      viewfinder.classList.add('viewfinder--exiting');
+      timecodeRunning = false;
+
+      setTimeout(function () {
+        viewfinder.classList.add('viewfinder--hidden');
+        site.classList.add('site--visible');
+        document.body.style.overflow = '';
+
+        // Show scroll progress
+        if (scrollProgress) {
+          scrollProgress.classList.add('visible');
+        }
+
+        // Init main site
+        if (typeof window.initMainSite === 'function') {
+          window.initMainSite();
+        }
+      }, 1500);
+    }, 150);
+
     document.body.style.overflow = 'hidden';
   }
 
   enterBtn.addEventListener('click', enterSite);
 
-  // Also allow Enter key to start
   document.addEventListener('keydown', function (e) {
     if (e.key === 'Enter' && !viewfinder.classList.contains('viewfinder--hidden')) {
       enterSite();
     }
   });
 
-  // Prevent scrolling while viewfinder is visible
+  // Lock scroll during viewfinder
   document.body.style.overflow = 'hidden';
+
+  // Add screen-shake keyframe dynamically
+  var style = document.createElement('style');
+  style.textContent = '@keyframes screen-shake { 0%, 100% { transform: translate(0); } 20% { transform: translate(-3px, 2px); } 40% { transform: translate(3px, -2px); } 60% { transform: translate(-2px, -1px); } 80% { transform: translate(2px, 1px); } }';
+  document.head.appendChild(style);
 
 })();
