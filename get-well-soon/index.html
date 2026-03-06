@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>Get Well Soon, Latifah</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Nunito:wght@400;600;700;800&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ═══ MEDICINE BOTTLE ENTRY ═══ -->
+  <div id="entry" class="entry">
+    <div class="entry__bottle" id="bottle">
+      <div class="entry__bottle-cap"></div>
+      <div class="entry__bottle-body">
+        <div class="entry__bottle-label">
+          <p class="entry__bottle-rx">Rx</p>
+          <p class="entry__bottle-name">For: <strong>Latifah</strong></p>
+          <p class="entry__bottle-dose">Dosage: Unlimited smiles</p>
+          <p class="entry__bottle-refill">Refills: Infinite</p>
+        </div>
+      </div>
+    </div>
+    <button class="entry__btn" id="open-btn">Take Your Medicine</button>
+    <p class="entry__sub">* Side effects may include: smiling, feeling loved, and a sudden urge to get better</p>
+  </div>
+
+  <!-- ═══ FLOATING BUBBLES ═══ -->
+  <div class="bubbles" id="bubbles" aria-hidden="true"></div>
+
+  <!-- ═══ MAIN SITE ═══ -->
+  <div id="site" class="site">
+
+    <!-- ─── Hero ─── -->
+    <section class="hero">
+      <div class="hero__sun" id="hero-sun">
+        <div class="hero__sun-face">
+          <div class="hero__sun-eye hero__sun-eye--left"></div>
+          <div class="hero__sun-eye hero__sun-eye--right"></div>
+          <div class="hero__sun-mouth"></div>
+        </div>
+      </div>
+      <h1 class="hero__title">
+        <span class="hero__line">Hey Latifah,</span>
+        <span class="hero__line hero__line--big">Get Well Soon!</span>
+      </h1>
+      <p class="hero__sub">I know you're not feeling great right now, but I'm here. Always.</p>
+      <div class="hero__cloud hero__cloud--1"></div>
+      <div class="hero__cloud hero__cloud--2"></div>
+      <div class="hero__cloud hero__cloud--3"></div>
+    </section>
+
+    <!-- ─── Prescription ─── -->
+    <section class="prescription">
+      <h2 class="section-title">Doctor's Orders</h2>
+      <div class="prescription__pad">
+        <div class="prescription__header">
+          <span class="prescription__rx">Rx</span>
+          <span class="prescription__patient">Patient: Latifah (The Most Beautiful One)</span>
+        </div>
+        <ul class="prescription__list">
+          <li class="prescription__item" data-check>
+            <span class="prescription__check"></span>
+            <span>Lots of rest (no arguing on this one)</span>
+          </li>
+          <li class="prescription__item" data-check>
+            <span class="prescription__check"></span>
+            <span>Warm soup delivered with love</span>
+          </li>
+          <li class="prescription__item" data-check>
+            <span class="prescription__check"></span>
+            <span>At least 10 hugs per day (minimum)</span>
+          </li>
+          <li class="prescription__item" data-check>
+            <span class="prescription__check"></span>
+            <span>Binge-watching your favorite show guilt-free</span>
+          </li>
+          <li class="prescription__item" data-check>
+            <span class="prescription__check"></span>
+            <span>Being spoiled rotten until further notice</span>
+          </li>
+          <li class="prescription__item" data-check>
+            <span class="prescription__check"></span>
+            <span>Reading this website whenever you need a smile</span>
+          </li>
+        </ul>
+        <div class="prescription__sig">
+          <p>Signed: Your Personal Nurse (who can't actually cook, but will try)</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── Hug Counter ─── -->
+    <section class="hugs">
+      <h2 class="section-title">Virtual Hug Machine</h2>
+      <p class="hugs__sub">Every tap sends a real hug through the internet. It's science.</p>
+      <div class="hugs__bear" id="hug-bear">
+        <div class="hugs__bear-body">
+          <div class="hugs__bear-ear hugs__bear-ear--left"></div>
+          <div class="hugs__bear-ear hugs__bear-ear--right"></div>
+          <div class="hugs__bear-face">
+            <div class="hugs__bear-eye hugs__bear-eye--left"></div>
+            <div class="hugs__bear-eye hugs__bear-eye--right"></div>
+            <div class="hugs__bear-nose"></div>
+            <div class="hugs__bear-mouth" id="bear-mouth"></div>
+          </div>
+          <div class="hugs__bear-arm hugs__bear-arm--left" id="bear-arm-left"></div>
+          <div class="hugs__bear-arm hugs__bear-arm--right" id="bear-arm-right"></div>
+        </div>
+      </div>
+      <button class="hugs__btn" id="hug-btn">Hug Me!</button>
+      <div class="hugs__counter">Hugs sent: <span id="hug-count">0</span></div>
+      <div class="hugs__msg" id="hug-msg"></div>
+    </section>
+
+    <!-- ─── Mood Picker ─── -->
+    <section class="mood">
+      <h2 class="section-title">How Are You Feeling?</h2>
+      <p class="mood__sub">Tap how you feel and I'll make it better</p>
+      <div class="mood__options">
+        <button class="mood__face" data-mood="sick">
+          <span class="mood__emoji">&#129314;</span>
+          <span class="mood__label">Ugh</span>
+        </button>
+        <button class="mood__face" data-mood="tired">
+          <span class="mood__emoji">&#128564;</span>
+          <span class="mood__label">Sleepy</span>
+        </button>
+        <button class="mood__face" data-mood="meh">
+          <span class="mood__emoji">&#128528;</span>
+          <span class="mood__label">Meh</span>
+        </button>
+        <button class="mood__face" data-mood="okay">
+          <span class="mood__emoji">&#128578;</span>
+          <span class="mood__label">Okay</span>
+        </button>
+        <button class="mood__face" data-mood="better">
+          <span class="mood__emoji">&#128513;</span>
+          <span class="mood__label">Better!</span>
+        </button>
+      </div>
+      <div class="mood__response" id="mood-response"></div>
+    </section>
+
+    <!-- ─── Things I'll Do ─── -->
+    <section class="promises">
+      <h2 class="section-title">While You're Sick, I Will...</h2>
+      <div class="promises__cards">
+        <div class="promise-card">
+          <div class="promise-card__icon">&#127858;</div>
+          <p>Make you tea. Bad tea, probably, but it's the thought that counts.</p>
+        </div>
+        <div class="promise-card">
+          <div class="promise-card__icon">&#128250;</div>
+          <p>Let you have the remote. Yes, even during the game. That's how serious this is.</p>
+        </div>
+        <div class="promise-card">
+          <div class="promise-card__icon">&#128716;</div>
+          <p>Fluff your pillows exactly 47 times until you say it's comfortable.</p>
+        </div>
+        <div class="promise-card">
+          <div class="promise-card__icon">&#127836;</div>
+          <p>Attempt to make soup. Google will be my co-chef. No promises on taste.</p>
+        </div>
+        <div class="promise-card">
+          <div class="promise-card__icon">&#128241;</div>
+          <p>Text you every 5 minutes to check on you. Annoying? Maybe. Loving? Absolutely.</p>
+        </div>
+        <div class="promise-card">
+          <div class="promise-card__icon">&#127801;</div>
+          <p>Bring you roses. Because even when you're sick, you deserve flowers.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── Healing Progress Bar ─── -->
+    <section class="healing">
+      <h2 class="section-title">Your Healing Progress</h2>
+      <div class="healing__bar-container">
+        <div class="healing__bar">
+          <div class="healing__fill" id="healing-fill">
+            <span class="healing__percent" id="healing-percent">0%</span>
+          </div>
+        </div>
+        <button class="healing__boost" id="healing-boost">Send Love Boost</button>
+        <div class="healing__stages">
+          <span class="healing__stage" data-at="0">&#129314;</span>
+          <span class="healing__stage" data-at="25">&#128567;</span>
+          <span class="healing__stage" data-at="50">&#128528;</span>
+          <span class="healing__stage" data-at="75">&#128578;</span>
+          <span class="healing__stage" data-at="100">&#129321;</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── Joke Machine ─── -->
+    <section class="jokes">
+      <h2 class="section-title">Bad Jokes To Make You Smile</h2>
+      <p class="jokes__sub">They say laughter is the best medicine. So here's some questionable medicine.</p>
+      <div class="jokes__card" id="joke-card">
+        <div class="jokes__question" id="joke-question">Why did the sick person go to the doctor?</div>
+        <div class="jokes__answer" id="joke-answer">Because they didn't feel well! (ba dum tss)</div>
+        <button class="jokes__reveal" id="joke-reveal">Show Punchline</button>
+      </div>
+      <button class="jokes__next" id="joke-next">Next Joke</button>
+    </section>
+
+    <!-- ─── Warm Message ─── -->
+    <section class="message">
+      <div class="message__card">
+        <div class="message__hearts" id="msg-hearts"></div>
+        <h2 class="message__title">Latifah,</h2>
+        <p class="message__text">
+          I know being sick is the worst. Your body is fighting hard right now,
+          and I wish I could fight it for you. But since I can't punch a cold in the face,
+          I built you this instead.
+        </p>
+        <p class="message__text">
+          Every time you smile reading this, you're already getting better.
+          That's not science, that's just you being incredible.
+        </p>
+        <p class="message__text message__text--bold">
+          Rest up, drink your water, and know that someone thinks you're
+          absolutely amazing &mdash; even with a runny nose.
+        </p>
+        <p class="message__sign">All my love, always &#10084;&#65039;</p>
+      </div>
+    </section>
+
+    <!-- ─── Final ─── -->
+    <section class="final">
+      <div class="final__content">
+        <div class="final__emoji-rain" id="emoji-rain"></div>
+        <p class="final__pre">Remember...</p>
+        <h2 class="final__big">You're tougher than whatever this is.</h2>
+        <p class="final__sub">And way, WAY cuter too.</p>
+        <button class="final__btn" id="final-btn">Send Yourself One More Hug</button>
+      </div>
+    </section>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

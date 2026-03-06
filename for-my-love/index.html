@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For You</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Inter:wght@400;600;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ═══ FALLING PETALS (always visible) ═══ -->
+  <div class="petals" id="petals" aria-hidden="true"></div>
+
+  <!-- ═══ SPARKLE CURSOR TRAIL ═══ -->
+  <div class="sparkle-container" id="sparkle-container" aria-hidden="true"></div>
+
+  <!-- ═══ ENTRY SCREEN ═══ -->
+  <div id="entry" class="entry">
+    <div class="entry__roses" aria-hidden="true">
+      <span class="entry__rose entry__rose--1">&#127801;</span>
+      <span class="entry__rose entry__rose--2">&#127801;</span>
+      <span class="entry__rose entry__rose--3">&#127801;</span>
+      <span class="entry__rose entry__rose--4">&#127801;</span>
+      <span class="entry__rose entry__rose--5">&#127801;</span>
+      <span class="entry__rose entry__rose--6">&#127801;</span>
+    </div>
+    <div class="entry__envelope" id="envelope">
+      <div class="entry__envelope-flap"></div>
+      <div class="entry__envelope-body">
+        <div class="entry__letter">
+          <p class="entry__letter-text">You have <span class="wiggle">1</span> unread love letter</p>
+          <p class="entry__letter-rose">&#127801;</p>
+        </div>
+      </div>
+    </div>
+    <button class="entry__btn" id="open-btn">&#127801; Open It &#127801;</button>
+    <p class="entry__warning">* Warning: contains dangerously high levels of cheesiness and roses</p>
+  </div>
+
+  <!-- ═══ MAIN SITE ═══ -->
+  <div id="site" class="site">
+
+    <!-- ─── Hero ─── -->
+    <section class="hero">
+      <div class="hero__glow"></div>
+      <h1 class="hero__title">
+        <span class="hero__line">Hey You,</span>
+        <span class="hero__line hero__line--big">Yeah, You. &#127801;</span>
+      </h1>
+      <p class="hero__sub">The one who steals the blanket every single night.</p>
+      <div class="hero__scroll-hint">
+        <span class="hero__scroll-text">Scroll down, beautiful</span>
+        <span class="hero__scroll-arrow">&#8595;</span>
+      </div>
+    </section>
+
+    <!-- ─── Reasons ─── -->
+    <section class="reasons">
+      <h2 class="section-title">Reasons I Like You <span class="tiny">(short version, the full list crashed my browser)</span></h2>
+      <div class="reasons__grid">
+        <div class="reason-card" data-tilt>
+          <div class="reason-card__num">01</div>
+          <div class="reason-card__rose">&#127801;</div>
+          <p class="reason-card__text">Your laugh. It's my favorite sound in the whole world. Yes, even better than the microwave beep.</p>
+        </div>
+        <div class="reason-card" data-tilt>
+          <div class="reason-card__num">02</div>
+          <div class="reason-card__rose">&#127801;</div>
+          <p class="reason-card__text">The way you pretend to be mad but can't keep a straight face for more than 3 seconds.</p>
+        </div>
+        <div class="reason-card" data-tilt>
+          <div class="reason-card__num">03</div>
+          <div class="reason-card__rose">&#127801;</div>
+          <p class="reason-card__text">You make even the boring days feel like an adventure. Grocery shopping with you? Peak entertainment.</p>
+        </div>
+        <div class="reason-card" data-tilt>
+          <div class="reason-card__num">04</div>
+          <div class="reason-card__rose">&#127801;</div>
+          <p class="reason-card__text">Your terrible jokes. They're so bad they circle all the way back to being hilarious.</p>
+        </div>
+        <div class="reason-card" data-tilt>
+          <div class="reason-card__num">05</div>
+          <div class="reason-card__rose">&#127801;</div>
+          <p class="reason-card__text">That thing you do where you zone out and then come back with the most random thought ever. Never change.</p>
+        </div>
+        <div class="reason-card" data-tilt>
+          <div class="reason-card__num">06</div>
+          <div class="reason-card__rose">&#127801;</div>
+          <p class="reason-card__text">You put up with me. That alone deserves an award. Maybe a trophy. Definitely a snack.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── Photo Wall ─── -->
+    <!-- ============================================
+         HOW TO ADD YOUR PHOTOS:
+         1. Put your photos in the "photos/" folder
+         2. Name them: photo1.jpg, photo2.jpg, photo3.jpg, photo4.jpg
+         3. Change src="photos/photo1.svg" to src="photos/photo1.jpg" (etc.)
+         4. Update the captions below each photo!
+         ============================================ -->
+    <section class="photos">
+      <h2 class="section-title">The Evidence <span class="tiny">(exhibit A through cute)</span></h2>
+      <div class="photos__wall">
+        <div class="photo-frame photo-frame--1">
+          <div class="photo-frame__placeholder">
+            <img src="photos/photo1.svg" alt="Us being cute" class="photo-frame__img">
+            <div class="photo-frame__replace-me">
+              <span class="photo-frame__replace-icon">&#128247;</span>
+              <span>REPLACE WITH<br>YOUR PHOTO</span>
+              <span class="photo-frame__replace-file">photo1.jpg</span>
+            </div>
+          </div>
+          <div class="photo-frame__caption">This one. This is the one that gets me every time. &#127801;</div>
+          <div class="photo-frame__tape"></div>
+        </div>
+        <div class="photo-frame photo-frame--2">
+          <div class="photo-frame__placeholder">
+            <img src="photos/photo2.svg" alt="More evidence of cuteness" class="photo-frame__img">
+            <div class="photo-frame__replace-me">
+              <span class="photo-frame__replace-icon">&#128247;</span>
+              <span>REPLACE WITH<br>YOUR PHOTO</span>
+              <span class="photo-frame__replace-file">photo2.jpg</span>
+            </div>
+          </div>
+          <div class="photo-frame__caption">Objectively the best-looking couple. I don't make the rules.</div>
+          <div class="photo-frame__tape"></div>
+        </div>
+        <div class="photo-frame photo-frame--3">
+          <div class="photo-frame__placeholder">
+            <img src="photos/photo3.svg" alt="Even more cuteness" class="photo-frame__img">
+            <div class="photo-frame__replace-me">
+              <span class="photo-frame__replace-icon">&#128247;</span>
+              <span>REPLACE WITH<br>YOUR PHOTO</span>
+              <span class="photo-frame__replace-file">photo3.jpg</span>
+            </div>
+          </div>
+          <div class="photo-frame__caption">Remember this? I was thinking about food. You were being adorable. Business as usual.</div>
+          <div class="photo-frame__tape"></div>
+        </div>
+        <div class="photo-frame photo-frame--4">
+          <div class="photo-frame__placeholder">
+            <img src="photos/photo4.svg" alt="Peak cuteness achieved" class="photo-frame__img">
+            <div class="photo-frame__replace-me">
+              <span class="photo-frame__replace-icon">&#128247;</span>
+              <span>REPLACE WITH<br>YOUR PHOTO</span>
+              <span class="photo-frame__replace-file">photo4.jpg</span>
+            </div>
+          </div>
+          <div class="photo-frame__caption">Scientists confirm: we are, in fact, that couple. Sorry not sorry. &#127801;</div>
+          <div class="photo-frame__tape"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── Rose Garden ─── -->
+    <section class="garden">
+      <h2 class="section-title">A Rose For Every Day <span class="tiny">(click them, they bloom for you)</span></h2>
+      <div class="garden__field" id="garden-field">
+        <div class="garden__row" id="garden-row"></div>
+      </div>
+      <div class="garden__counter">Roses bloomed: <span id="rose-count">0</span></div>
+    </section>
+
+    <!-- ─── The Quiz ─── -->
+    <section class="quiz">
+      <h2 class="section-title">Pop Quiz &#127801;</h2>
+      <div class="quiz__container" id="quiz">
+        <div class="quiz__question" id="quiz-question">Do you know how amazing you are?</div>
+        <div class="quiz__options" id="quiz-options">
+          <button class="quiz__option" data-answer="wrong">A little bit</button>
+          <button class="quiz__option" data-answer="wrong">Pretty amazing, I guess</button>
+          <button class="quiz__option" data-answer="wrong">Extremely amazing</button>
+          <button class="quiz__option" data-answer="right">All of the above (but more)</button>
+        </div>
+        <div class="quiz__result" id="quiz-result"></div>
+      </div>
+    </section>
+
+    <!-- ─── Compliment Generator ─── -->
+    <section class="compliments">
+      <h2 class="section-title">Emergency Compliment Button</h2>
+      <p class="compliments__sub">For when you need a reminder (which you shouldn't, but here we are)</p>
+      <div class="compliments__display" id="compliment-display">Press the button. I dare you.</div>
+      <button class="compliments__btn" id="compliment-btn">
+        <span class="compliments__btn-text">&#127801; Hit Me &#127801;</span>
+      </button>
+      <div class="compliments__counter">Compliments dispensed: <span id="compliment-count">0</span></div>
+    </section>
+
+    <!-- ─── Love Meter ─── -->
+    <section class="meter">
+      <h2 class="section-title">Official Love Meter</h2>
+      <div class="meter__container">
+        <div class="meter__bar">
+          <div class="meter__fill" id="meter-fill"></div>
+          <div class="meter__label" id="meter-label">Click to measure</div>
+        </div>
+        <button class="meter__btn" id="meter-btn">Measure Love</button>
+        <div class="meter__verdict" id="meter-verdict"></div>
+      </div>
+    </section>
+
+    <!-- ─── Steal My Heart ─── -->
+    <section class="steal-heart">
+      <h2 class="section-title">Can You Steal My Heart? <span class="tiny">(spoiler: you already did)</span></h2>
+      <div class="steal-heart__area" id="steal-heart-area">
+        <span class="steal-heart__target" id="steal-heart-target">&#10084;&#65039;</span>
+      </div>
+      <div class="steal-heart__score" id="steal-heart-score">Try to catch it!</div>
+      <div class="steal-heart__msg" id="steal-heart-msg"></div>
+    </section>
+
+    <!-- ─── Promise Notes ─── -->
+    <section class="promises">
+      <h2 class="section-title">My Promises <span class="tiny">(legally binding, probably)</span></h2>
+      <div class="promises__scroll">
+        <div class="promise-note">
+          <p>I promise to always let you pick the movie (even when you pick the same one for the 47th time). &#127801;</p>
+        </div>
+        <div class="promise-note">
+          <p>I promise to pretend I didn't eat the last slice. Badly. With crumbs on my face.</p>
+        </div>
+        <div class="promise-note">
+          <p>I promise to be your personal heater in winter and to not complain when you put your ice-cold feet on me. Much. &#127801;</p>
+        </div>
+        <div class="promise-note">
+          <p>I promise to always hype you up, even when you're wearing that outfit I have opinions about.</p>
+        </div>
+        <div class="promise-note">
+          <p>I promise to buy you roses randomly, not just on special days. Because every day with you IS special. &#127801;</p>
+        </div>
+        <div class="promise-note">
+          <p>I promise to build you random websites at 2am because that's apparently how I show love.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── Final ─── -->
+    <section class="final">
+      <div class="final__content">
+        <p class="final__text">In case it wasn't obvious enough...</p>
+        <h2 class="final__big" id="final-text">I really, really like your face.</h2>
+        <p class="final__small">And the rest of you too, I suppose. &#127801;</p>
+        <div class="final__hearts" id="heart-explosion"></div>
+      </div>
+      <div class="final__bouquet" id="final-bouquet">
+        <span class="final__bouquet-rose">&#127801;</span>
+        <span class="final__bouquet-rose">&#127801;</span>
+        <span class="final__bouquet-rose">&#127801;</span>
+        <span class="final__bouquet-rose">&#127801;</span>
+        <span class="final__bouquet-rose">&#127801;</span>
+        <span class="final__bouquet-rose">&#127801;</span>
+        <span class="final__bouquet-rose">&#127801;</span>
+      </div>
+      <button class="final__replay" id="replay-btn">Read it again (you know you want to) &#127801;</button>
+    </section>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

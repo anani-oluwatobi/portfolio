@@ -84,12 +84,36 @@
     });
   }
 
+  // ─── Take Counter ───────────────────────────
+  var takeCount = 1;
+  var takeEl = viewfinder.querySelector('.viewfinder__slate-take');
+
+  if (takeEl) {
+    viewfinder.addEventListener('click', function (e) {
+      // Don't count enter button clicks or contact links
+      if (e.target.closest('#enter-btn, .viewfinder__contact-link')) return;
+      takeCount++;
+      takeEl.textContent = 'TAKE ' + takeCount;
+      takeEl.style.color = 'rgba(200, 169, 110, 0.6)';
+      setTimeout(function () { takeEl.style.color = ''; }, 400);
+    });
+  }
+
   // ─── Enter the Frame ─────────────────────────
+  var clapEl = document.getElementById('viewfinder-clap');
+
   function enterSite() {
-    // Screen shake effect
+    // Director's slate clap
+    if (clapEl) {
+      clapEl.classList.add('active');
+    }
+
+    // Brief white flash behind clap
     viewfinder.style.animation = 'screen-shake 0.15s ease';
 
     setTimeout(function () {
+      if (clapEl) clapEl.classList.remove('active');
+
       viewfinder.classList.add('viewfinder--exiting');
       timecodeRunning = false;
 
@@ -108,7 +132,7 @@
           window.initMainSite();
         }
       }, 1500);
-    }, 150);
+    }, 300);
 
     document.body.style.overflow = 'hidden';
   }

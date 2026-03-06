@@ -65,11 +65,14 @@
       e.preventDefault();
     });
 
+    var energyEl = document.getElementById('split-energy');
+
     window.addEventListener('pointermove', function (e) {
       if (!isDragging) return;
       var pct = (e.clientX / window.innerWidth) * 100;
       pct = Math.max(15, Math.min(85, pct));
       document.documentElement.style.setProperty('--split-pos', pct + '%');
+      if (energyEl) energyEl.style.left = 'calc(' + pct + '% - 12px)';
     });
 
     window.addEventListener('pointerup', function () {
